@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+	<effects>
+		<!-- glow: blurred glow effect around the clear logo.
+					radius - blurred width of glowing underlayer [integer 1..20];
+					lightness_threshold - value of clear logo image lightness (only pixels with alpha > 127 will be taken in count) [float0.0..1.0];
+					active_part - for what part of lightness range will be generated effect ["above" or "below"].
+								  e.g. if lightness_threshold="0.5" and active_part="above" then effect will be generated 
+								  for all logos with lightness values above 0.5
+		-->
+		<effect enabled="no" type="glow" radius="10" color="Silver" lightness_threshold="0.35" active_part="below" />
+
+		<!-- outerglow: blurred contour effect around the clear logo.	
+					width - width of contour around the non-transparent part of clear logotype [integer 1..5];
+					transparency - transparency of that blurred contour [float 0.0..1.0];
+					lightness_threshold and active_part - same as in glow effect.
+		-->
+
+		<effect enabled="no" type="outerglow" width="2" color="White" transparency="0.7" lightness_threshold="0.35" active_part="below" />		
+
+		<!-- resize: resize logo image if necessary. Will be done in such way that whole logo should be visible in resulting image.
+					minX - minimal logo image width for that no resize will be taken;
+					maxX - maximal logo image width for that no resize will be taken;
+					resizedX - new width value that logo image will be scaled to, if image width is out of range Minx..MaxX;
+					MinY, MaxY, resizedY - same as above, but for image height;
+					MinXY, MaxXY, resizedXY - same as above but for any dimension (width or height);
+				It makes sense to use either set of (MinX + MaxX + resizedX + MinY + MaxY + resizedY) or (minXY + maxXY + resizedXY).
+		-->
+		<effect enabled="yes" type="resize" minX="170" maxX="200" resizedX="190" minY="130" maxY="150" resizedY="140" />
+		<effect enabled="no" type="resize" minXY="160" maxXY="200" resizedXY="200" />
+	</effects>
+</settings>

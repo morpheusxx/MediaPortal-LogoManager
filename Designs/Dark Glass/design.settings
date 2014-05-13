@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+	<effects>
+		<effect enabled="no" type="glow" radius="10" color="Silver" lightness_threshold="0.35" active_part="below" />
+		<effect enabled="no" type="outerglow" width="2" color="White" transparency="0.7" lightness_threshold="0.35" active_part="below" />		
+	</effects>
+</settings>
