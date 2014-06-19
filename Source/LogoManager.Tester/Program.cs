@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using MediaPortal.LogoManager.Effects;
 
 namespace MediaPortal.LogoManager.Tester
@@ -29,7 +31,16 @@ namespace MediaPortal.LogoManager.Tester
       ProcessFile(processor, design, "1_plus_1_International", effects);
 
       // Test 2: From repository
-      ProcessStream(processor, design, "zdf", effects);
+      using (var repo = new LogoRepository { RepositoryUrl = REPOSITORY_URL })
+      {
+        // Parallel async processing
+        var results = repo.Download(new[] { "zdf hd", "animal planet hd", "discovery channel" });
+        Task.WaitAll(results.Select(channelAndStream => ProcessStream(processor, channelAndStream.Value, design, channelAndStream.Key, effects)).ToArray());
+
+        // Synchronous processing
+        var stream = repo.Download("zdf");
+        ProcessStream(processor, stream, design, "zdf", effects);
+      }
     }
 
     static void ProcessFile(LogoProcessor processor, string design, string channelName, List<AbstractEffect> effects)
@@ -40,15 +51,19 @@ namespace MediaPortal.LogoManager.Tester
       processor.CreateLogo(design, logoFile, saveFileName, effects);
     }
 
-    static void ProcessStream(LogoProcessor processor, string design, string channelName, List<AbstractEffect> effects)
+    static void ProcessStream(LogoProcessor processor, Stream logo, string design, string channelName, List<AbstractEffect> effects)
     {
       string saveFileName = string.Format("{0}_{1}.png", design, channelName); // Processed file
-
-      using (var repo = new LogoRepository { RepositoryUrl = REPOSITORY_URL })
-      using (Stream logo = repo.Download(channelName).Result)
-      {
+      using (logo)
         processor.CreateLogo(design, logo, saveFileName, effects);
-      }
+    }
+
+    static async Task ProcessStream(LogoProcessor processor, Task<Stream> logo, string design, string channelName, List<AbstractEffect> effects)
+    {
+      string saveFileName = string.Format("{0}_{1}.png", design, channelName); // Processed file
+      Stream logoStream = await logo;
+      using (logoStream)
+        processor.CreateLogo(design, logoStream, saveFileName, effects);
     }
   }
 }
