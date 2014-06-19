@@ -1,10 +1,14 @@
 ﻿using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace MediaPortal.LogoManager.Effects
 {
+  [DataContract]
   public class EffectOuterGlow : EffectGlow
   {
+    [DataMember]
     public int Width { get; set; }
+    [DataMember]
     public float? Transparency { get; set; }
 
     public override bool ApplyGlow(Graphics targetGraphics, ref Bitmap logo)

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using MediaPortal.LogoManager.Design;
 using MediaPortal.LogoManager.Effects;
 
 namespace MediaPortal.LogoManager
@@ -14,6 +15,20 @@ namespace MediaPortal.LogoManager
     /// Gets or sets the folder, where the designs are located.
     /// </summary>
     public string DesignsFolder { get; set; }
+
+    /// <summary>
+    /// Creates a logo image for the given <paramref name="logoFileName"/> using the <paramref name="theme"/>. The final result will be saved to <paramref name="saveFileName"/>.
+    /// Note:
+    /// Exceptions are not caught in this method, so caller needs to handle them accordingly.
+    /// </summary>
+    /// <param name="theme">Theme.</param>
+    /// <param name="logoFileName">Source logo to process.</param>
+    /// <param name="saveFileName">Target filename to save.</param>
+    /// <returns><c>true</c> if successful</returns>
+    public bool CreateLogo(Theme theme, string logoFileName, string saveFileName)
+    {
+      return CreateLogo(theme.DesignName, logoFileName, saveFileName, theme.Effects);
+    }
 
     /// <summary>
     /// Creates a logo image for the given <paramref name="logoFileName"/> using the <paramref name="designName"/>. The final result will be saved to <paramref name="saveFileName"/>.
@@ -34,6 +49,20 @@ namespace MediaPortal.LogoManager
 
       Bitmap logo = (Bitmap)Image.FromFile(logoFileName);
       return CreateLogo(designName, logo, saveFileName, effects);
+    }
+
+    /// <summary>
+    /// Creates a logo image for the given <paramref name="logoStream"/> using the <paramref name="theme"/>. The final result will be saved to <paramref name="saveFileName"/>.
+    /// Note:
+    /// Exceptions are not caught in this method, so caller needs to handle them accordingly.
+    /// </summary>
+    /// <param name="theme">Theme.</param>
+    /// <param name="logoStream">Stream with logo bitmap to process.</param>
+    /// <param name="saveFileName">Target filename to save.</param>
+    /// <returns><c>true</c> if successful</returns>
+    public bool CreateLogo(Theme theme, Stream logoStream, string saveFileName)
+    {
+      return CreateLogo(theme.DesignName, logoStream, saveFileName, theme.Effects);
     }
 
     /// <summary>

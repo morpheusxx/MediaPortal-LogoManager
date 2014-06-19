@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace MediaPortal.LogoManager.Effects
 {
@@ -7,11 +8,13 @@ namespace MediaPortal.LogoManager.Effects
   /// <summary>
   /// Base class for all effects.
   /// </summary>
+  [DataContract]
   public abstract class AbstractEffect
   {
     /// <summary>
     /// Controls the render order of the effect.
     /// </summary>
+    [DataMember]
     public ActivePart ActivePart { get; set; }
 
     /// <summary>

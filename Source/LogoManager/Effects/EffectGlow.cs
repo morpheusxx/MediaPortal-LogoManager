@@ -1,14 +1,20 @@
 ﻿using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace MediaPortal.LogoManager.Effects
 {
+  [DataContract]
   public class EffectGlow : AbstractEffect
   {
     protected float _drawX = 0.0f;
     protected float _drawY = 0.0f;
+    [DataMember]
     public Color Color { get; set; }
+    [DataMember]
     public int Radius { get; set; }
+    [DataMember]
     public bool UseThreshold { get; set; }
+    [DataMember]
     public float Threshold { get; set; }
 
     public EffectGlow()

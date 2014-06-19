@@ -1,11 +1,16 @@
 ﻿using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace MediaPortal.LogoManager.Effects
 {
+  [DataContract]
   public class EffectResize : AbstractEffect
   {
+    [DataMember]
     public Size? MinSize { get; set; }
+    [DataMember]
     public Size? MaxSize { get; set; }
+    [DataMember]
     public Size TargetSize { get; set; }
 
     public Size CalculateNewSize(Size imgSize)

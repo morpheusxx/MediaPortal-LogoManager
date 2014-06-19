@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Design\Theme.cs" />
+    <Compile Include="Design\Design.cs" />
+    <Compile Include="Design\ThemeHandler.cs" />
     <Compile Include="LogoRepository.cs" />
     <Compile Include="Effects\AbstractEffect.cs" />
     <Compile Include="Effects\EffectGlow.cs" />

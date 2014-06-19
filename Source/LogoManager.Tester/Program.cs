@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using MediaPortal.LogoManager.Design;
 using MediaPortal.LogoManager.Effects;
 
 namespace MediaPortal.LogoManager.Tester
@@ -11,8 +12,39 @@ namespace MediaPortal.LogoManager.Tester
   {
     // Development service url
     private const string REPOSITORY_URL = "http://channellogos.nocrosshair.de/";
+    private const string DESIGN = "Modern";
+    private static string[] THEMES = new[] { "none", "max" };
 
     static void Main(string[] args)
+    {
+      // Create and load themes
+      CreateDefaultThemes();
+      List<Theme> themes = LoadAllThemes().ToList();
+
+      LogoProcessor processor = new LogoProcessor { DesignsFolder = "..\\..\\..\\..\\Designs" };
+
+      foreach (Theme theme in themes)
+      {
+        // Test 1: From file
+        ProcessFile(processor, "1_plus_1_International", theme);
+
+        // Test 2: From repository
+        using (var repo = new LogoRepository { RepositoryUrl = REPOSITORY_URL })
+        {
+          // Parallel async processing
+          var results = repo.Download(new[] { "zdf hd", "animal planet hd", "discovery channel" });
+          Task.WaitAll(results.Select(channelAndStream => ProcessStream(processor, channelAndStream.Value, channelAndStream.Key, theme)).ToArray());
+
+          // Synchronous processing
+          var stream = repo.Download("zdf");
+          ProcessStream(processor, stream, "zdf", theme);
+        }
+      }
+    }
+
+    #region Theme handling
+
+    public static void CreateDefaultThemes()
     {
       // Define list of effects to be applied to source logo, order matters here. Add only effects that are enabled by configuration.
       List<AbstractEffect> effects = new List<AbstractEffect>
@@ -23,47 +55,58 @@ namespace MediaPortal.LogoManager.Tester
         new EffectOuterGlow {Color = Color.Green, Width = 2, Transparency = 0.8f}
       };
 
-      LogoProcessor processor = new LogoProcessor { DesignsFolder = "..\\..\\..\\..\\Designs" };
-
-      const string design = "Modern";
-
-      // Test 1: From file
-      ProcessFile(processor, design, "1_plus_1_International", effects);
-
-      // Test 2: From repository
-      using (var repo = new LogoRepository { RepositoryUrl = REPOSITORY_URL })
+      ThemeHandler themeHandler = new ThemeHandler();
+      string theme = string.Format("{0}-{1}.theme", DESIGN, THEMES[0]);
+      if (!File.Exists(theme))
       {
-        // Parallel async processing
-        var results = repo.Download(new[] { "zdf hd", "animal planet hd", "discovery channel" });
-        Task.WaitAll(results.Select(channelAndStream => ProcessStream(processor, channelAndStream.Value, design, channelAndStream.Key, effects)).ToArray());
-
-        // Synchronous processing
-        var stream = repo.Download("zdf");
-        ProcessStream(processor, stream, design, "zdf", effects);
+        Theme themeModern = new Theme { DesignName = DESIGN, ThemeName = THEMES[0] };
+        themeHandler.Save(theme, themeModern);
+      }
+      theme = string.Format("{0}-{1}.theme", DESIGN, THEMES[1]);
+      if (!File.Exists(theme))
+      {
+        Theme themeModernMaxEffects = new Theme { DesignName = DESIGN, ThemeName = THEMES[1], Effects = effects };
+        themeHandler.Save(theme, themeModernMaxEffects);
       }
     }
 
-    static void ProcessFile(LogoProcessor processor, string design, string channelName, List<AbstractEffect> effects)
+    public static IEnumerable<Theme> LoadAllThemes()
+    {
+      ThemeHandler themeHandler = new ThemeHandler();
+      return THEMES.Select(theme => string.Format("{0}-{1}.theme", DESIGN, theme)).Select(themeHandler.Load);
+    }
+
+    #endregion
+
+    #region Logo processing
+
+    static void ProcessFile(LogoProcessor processor, string channelName, Theme theme)
     {
       string logoFile = string.Format("..\\..\\Example\\{0}.png", channelName); // Source file
-      string saveFileName = string.Format("{0}_{1}.png", design, channelName); // Processed file
-
-      processor.CreateLogo(design, logoFile, saveFileName, effects);
+      var saveFileName = BuildFileName(channelName, theme);
+      processor.CreateLogo(theme, logoFile, saveFileName);
     }
 
-    static void ProcessStream(LogoProcessor processor, Stream logo, string design, string channelName, List<AbstractEffect> effects)
+    static void ProcessStream(LogoProcessor processor, Stream logo, string channelName, Theme theme)
     {
-      string saveFileName = string.Format("{0}_{1}.png", design, channelName); // Processed file
+      var saveFileName = BuildFileName(channelName, theme);
       using (logo)
-        processor.CreateLogo(design, logo, saveFileName, effects);
+        processor.CreateLogo(theme, logo, saveFileName);
     }
 
-    static async Task ProcessStream(LogoProcessor processor, Task<Stream> logo, string design, string channelName, List<AbstractEffect> effects)
+    static async Task ProcessStream(LogoProcessor processor, Task<Stream> logo, string channelName, Theme theme)
     {
-      string saveFileName = string.Format("{0}_{1}.png", design, channelName); // Processed file
+      var saveFileName = BuildFileName(channelName, theme);
       Stream logoStream = await logo;
       using (logoStream)
-        processor.CreateLogo(design, logoStream, saveFileName, effects);
+        processor.CreateLogo(theme, logoStream, saveFileName);
     }
+
+    private static string BuildFileName(string channelName, Theme theme)
+    {
+      return string.Format("{0}-{1}_{2}.png", theme.DesignName, theme.ThemeName, channelName); // Processed file
+    }
+
+    #endregion
   }
 }
