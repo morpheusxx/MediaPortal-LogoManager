@@ -56,13 +56,13 @@ namespace MediaPortal.LogoManager.Tester
       };
 
       ThemeHandler themeHandler = new ThemeHandler();
-      string theme = string.Format("{0}-{1}.theme", DESIGN, THEMES[0]);
+      string theme = string.Format("{0}-{1}", DESIGN, THEMES[0]);
       if (!File.Exists(theme))
       {
         Theme themeModern = new Theme { DesignName = DESIGN, ThemeName = THEMES[0] };
         themeHandler.Save(theme, themeModern);
       }
-      theme = string.Format("{0}-{1}.theme", DESIGN, THEMES[1]);
+      theme = string.Format("{0}-{1}", DESIGN, THEMES[1]);
       if (!File.Exists(theme))
       {
         Theme themeModernMaxEffects = new Theme { DesignName = DESIGN, ThemeName = THEMES[1], Effects = effects };
@@ -73,7 +73,7 @@ namespace MediaPortal.LogoManager.Tester
     public static IEnumerable<Theme> LoadAllThemes()
     {
       ThemeHandler themeHandler = new ThemeHandler();
-      return THEMES.Select(theme => string.Format("{0}-{1}.theme", DESIGN, theme)).Select(themeHandler.Load);
+      return THEMES.Select(theme => string.Format("{0}-{1}", DESIGN, theme)).Select(themeHandler.Load);
     }
 
     #endregion
