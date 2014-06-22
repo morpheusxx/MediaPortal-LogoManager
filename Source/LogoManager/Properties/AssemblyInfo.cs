@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("LogoManager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MediaPortal.LogoManager")]
+[assembly: AssemblyDescription("MediaPortal LogoManager provides a versatile library to download, process and manage channel logos")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LogoProcessor")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("Team MediaPortal")]
+[assembly: AssemblyProduct("LogoManager")]
+[assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
