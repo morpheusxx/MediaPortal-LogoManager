@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="Home" description="Home" url="~/Default.aspx">
+    <siteMapNode url="" title="Suggestion" description="">
+      <siteMapNode url="Suggest.aspx" title="Add New" description="" />
+      <siteMapNode url="ListSuggestions.aspx" title="List Open" description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="Channels" description="">
+      <siteMapNode url="ListChannels.aspx" title="List All" description="" />
+      <siteMapNode url="ImportMappingFile.aspx" title="Import" description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="Providers" description="">
+      <siteMapNode url="ListProviders.aspx" title="List All" description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="User" description="">
+      <siteMapNode url="Register.aspx" title="Register" description="" />
+      <siteMapNode url="Login.aspx" title="Login" description="" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

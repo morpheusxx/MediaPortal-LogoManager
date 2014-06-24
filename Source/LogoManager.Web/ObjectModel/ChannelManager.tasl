@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PersistentObjectModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Name="ChannelManager" xmlns="http://www.tangiblearchitect.com/dsltools/PersistentObjects">
+  <ArrayOfStereoType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <StereoType>
+      <StereoTypeName>PersistentObjectModel</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.PersistentObjectModel</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>PersistentObject</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.PersistentObject</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>PersistentRootObject</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.PersistentRootObject</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Property</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Property</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Method</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Method</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Containment</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Containment</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Association</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Association</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Generalization</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Generalization</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Comment</StereoTypeName>
+      <BaseModelElementTypeFullName>tasl.Dsl.Comment</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+  </ArrayOfStereoType>
+  <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+  <persistentObjects>
+    <PersistentObject Id="9fcd78e7-b6bd-4144-a399-69714265ec2f" Name="User">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="bc1bdb40-9994-4200-a1e7-529c97cde050" Name="Login" type="String" defaultValue="" nameAndType="Login : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="ca9ab8a7-d758-490a-9011-5eeebac6e078" Name="Password" type="String" defaultValue="" nameAndType="Password : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="965904b7-295e-447c-bc7f-447e8b9e1a23" Name="Email" type="String" defaultValue="" nameAndType="Email : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="070e72ab-d828-4720-b559-83887579a789" Name="Info" type="String" defaultValue="" nameAndType="Info : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+      <AssociationTargets>
+        <Association Id="aa52c53a-1f56-461e-a503-56481b31ebbf" sourceMultiplicity="ZeroMany" sourceRoleName="Users" targetMultiplicity="ZeroMany" targetRoleName="Roles" name="Users_associate_Roles" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Role" />
+        </Association>
+        <Association Id="7bc62b10-d440-4f5e-9878-f053380a57f5" sourceMultiplicity="One" sourceRoleName="Creator" targetMultiplicity="ZeroMany" targetRoleName="Logos" name="User_associates_Logos" uniqueNaming="false" autoSourceRoleName="false" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Logo" />
+        </Association>
+        <Association Id="1b4292e6-4881-4711-aa51-2dcc5e99b4de" sourceMultiplicity="One" sourceRoleName="User" targetMultiplicity="ZeroMany" targetRoleName="Suggestions" name="User_associates_Suggestions" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Suggestion" />
+        </Association>
+        <Association Id="6c849be2-df15-4faf-877d-e72cf720562f" sourceMultiplicity="One" sourceRoleName="User" targetMultiplicity="ZeroMany" targetRoleName="Messages" name="User_associates_Messages" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Message" />
+        </Association>
+      </AssociationTargets>
+    </PersistentObject>
+    <PersistentObject Id="fb189425-8c68-40e9-9a9e-6bcb3e614635" Name="Role">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="70974f12-579a-4bbb-8066-74eb04acdef0" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+    </PersistentObject>
+    <PersistentObject Id="d87ffecc-9c5d-47a6-8066-89c1407668c8" Name="Logo">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="62d919fd-7c8d-4c08-baeb-93fa051bb537" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="ac51b247-0e75-457a-8ca6-fb03dfb55da3" Name="LastModified" type="DateTime" defaultValue="" nameAndType="LastModified : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="c03a1367-0acd-4dbd-be20-7004cda097a2" Name="Origin" type="String" defaultValue="" nameAndType="Origin : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+      <AssociationTargets>
+        <Association Id="d85ebf56-fd2a-464d-b0c9-bf77f229b99a" sourceMultiplicity="ZeroMany" sourceRoleName="Logos" targetMultiplicity="ZeroMany" targetRoleName="Channels" name="Logos_associate_Channels" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Channel" />
+        </Association>
+      </AssociationTargets>
+    </PersistentObject>
+    <PersistentObject Id="81ecd11a-bba2-40bc-be37-1efa64dc9489" Name="Channel">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="0bdddc58-3947-472f-b94e-a3fbbb314c4b" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="ace84334-90c7-43cb-9db1-ae720199ba97" Name="Website" type="String" defaultValue="" nameAndType="Website : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="d7eb5ece-b46e-48ff-a760-c367c77ea57e" Name="RegionCode" type="String" defaultValue="" nameAndType="RegionCode : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="bf4ed0fe-c45a-4e0f-9a3e-b1a87e5a975d" Name="Type" type="Byte" defaultValue="" nameAndType="Type : Byte" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="abccf5a9-a5e9-4cf2-b46c-c90262359156" Name="Description" type="String" defaultValue="" nameAndType="Description : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+      <ContainedTargets>
+        <Containment Id="53e9525b-2ba5-4d9d-b12b-23af1eaf725b" sourceMultiplicity="One" sourceRoleName="Channel" targetMultiplicity="ZeroMany" targetRoleName="Aliases" name="Channel_contains_Aliass" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="false" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Alias" />
+        </Containment>
+      </ContainedTargets>
+    </PersistentObject>
+    <PersistentObject Id="ed994d57-3a70-48e6-83a4-efea7a5979ec" Name="Alias">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="91f921bb-51fe-400e-8535-f90bd7c06daa" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="4059b5ec-a394-4899-9936-a5ba8ca35b2d" Name="Created" type="DateTime" defaultValue="" nameAndType="Created : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+      <AssociationTargets>
+        <Association Id="788defae-d657-44fa-8b4a-cd08a8f5b586" sourceMultiplicity="ZeroMany" sourceRoleName="Aliases" targetMultiplicity="ZeroMany" targetRoleName="Providers" name="Aliass_associate_Providers" uniqueNaming="false" autoSourceRoleName="false" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Provider" />
+        </Association>
+      </AssociationTargets>
+    </PersistentObject>
+    <PersistentObject Id="2c5751c2-fe30-4a3d-a14c-7670f777507a" Name="Suggestion">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="3ffc0b63-af79-4503-ba58-0ee7c8201e0b" Name="State" type="Byte" defaultValue="" nameAndType="State : Byte" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="25bf6d41-e432-4871-a5af-8c46a47dfa6d" Name="Created" type="DateTime" defaultValue="" nameAndType="Created : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="bb68c826-db9e-4fbb-b035-ef9f85ec8747" Name="LastModified" type="DateTime" defaultValue="" nameAndType="LastModified : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+      <ContainedTargets>
+        <Containment Id="52f1be20-6119-447b-bda3-07d8d5a1caa4" sourceMultiplicity="One" sourceRoleName="Suggestion" targetMultiplicity="ZeroMany" targetRoleName="Messages" name="Suggestion_contains_Messages" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Message" />
+        </Containment>
+      </ContainedTargets>
+      <AssociationTargets>
+        <Association Id="5e796723-5f28-4e4c-83c1-630973471bb2" sourceMultiplicity="One" sourceRoleName="Suggestion" targetMultiplicity="ZeroMany" targetRoleName="Aliases" name="Suggestion_associates_Aliases" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="false" autoName="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Alias" />
+        </Association>
+        <Association Id="4ff2b1e8-de3e-4789-977a-7c042d6f2740" sourceMultiplicity="One" sourceRoleName="Suggestion" targetMultiplicity="ZeroMany" targetRoleName="Logos" name="Suggestion_associates_Logos" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Logo" />
+        </Association>
+        <Association Id="c2ab81bc-fd14-4c66-834f-6b55bcfe6074" sourceMultiplicity="One" sourceRoleName="Suggestion" targetMultiplicity="ZeroMany" targetRoleName="Channels" name="Suggestion_associates_Channels" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Channel" />
+        </Association>
+      </AssociationTargets>
+    </PersistentObject>
+    <PersistentObject Id="0c97ee63-ab92-45c0-9216-274d357a2e9c" Name="Message">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="7449d862-604d-4d04-8655-6507bb3ef675" Name="Created" type="DateTime" defaultValue="" nameAndType="Created : DateTime" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="3c544065-91a6-4db3-8e18-cfee43b03f64" Name="Text" type="String" defaultValue="" nameAndType="Text : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+    </PersistentObject>
+    <PersistentObject Id="2ce06eea-f282-4f21-b59b-9458e83e1027" Name="Provider">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Properties>
+        <Property Id="7a107a6a-5dac-47b4-8659-7a90dd6a0449" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+      </Properties>
+    </PersistentObject>
+  </persistentObjects>
+  <persistentRootObject>
+    <persistentRootObject Id="ebf900a7-815b-4da3-9554-4aabf95b2ffe" Name="Repository">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <ContainedTargets>
+        <Containment Id="0b6e4cba-b574-442d-bcdb-5bd86044363e" sourceMultiplicity="One" sourceRoleName="Repository" targetMultiplicity="ZeroMany" targetRoleName="Users" name="Repository_contains_Users" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/User" />
+        </Containment>
+        <Containment Id="690d53bb-fc93-4988-84ba-ab5a538bb5db" sourceMultiplicity="One" sourceRoleName="Repository" targetMultiplicity="ZeroMany" targetRoleName="Channels" name="Repository_contains_Channels" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Channel" />
+        </Containment>
+        <Containment Id="f77ff38e-6427-41f1-8762-9866fe03b77e" sourceMultiplicity="One" sourceRoleName="Repository" targetMultiplicity="ZeroMany" targetRoleName="Roles" name="Repository_contains_Roles" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Role" />
+        </Containment>
+        <Containment Id="32a51eec-9339-40be-b378-0e83fd32f1d7" sourceMultiplicity="One" sourceRoleName="Repository" targetMultiplicity="ZeroMany" targetRoleName="Logos" name="Repository_contains_Logos" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Logo" />
+        </Containment>
+        <Containment Id="85aa7a6f-bfb7-484e-9ea6-50d0c23cab76" sourceMultiplicity="One" sourceRoleName="Repository" targetMultiplicity="ZeroMany" targetRoleName="Suggestions" name="Repository_contains_Suggestions" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Suggestion" />
+        </Containment>
+        <Containment Id="a8b2d884-7358-43bd-9f95-49f4c017d856" sourceMultiplicity="One" sourceRoleName="Repository" targetMultiplicity="ZeroMany" targetRoleName="Providers" name="Repository_contains_Providers" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <PersistentObjectMoniker Name="/ChannelManager/Provider" />
+        </Containment>
+      </ContainedTargets>
+    </persistentRootObject>
+  </persistentRootObject>
+</PersistentObjectModel>

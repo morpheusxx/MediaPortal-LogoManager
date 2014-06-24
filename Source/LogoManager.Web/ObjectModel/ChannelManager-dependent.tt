@@ -1,0 +1,262 @@
+<#
+// (c) tangible engineering GmbH 2012 -all rights reserved
+///////////////////////////////////////////////////////////////////////////
+// HOW TO USE THIS TEMPLATE:
+///////////////////////////////////////////////////////////////////////////
+// 1. Install-Package EntityFramework (5.0)
+// 2. Run Command in Nuget Package Manager: Enable-Migrations -EnableAutomaticMigrations -Verbose
+// 3. Insert the following code into your web.config or app.config
+//  <entityFramework>
+//     <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework"  >
+//       <parameters>
+//         <parameter value="Server=tcp:servername,1433;User ID=userid;Password=password;Trusted_Connection=False;Encrypt=True;" />
+//       </parameters>
+//     </defaultConnectionFactory>
+//   </entityFramework>
+////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+// This is work in progress:
+/////////////////////////////////////////////////////////////////////////////
+// TODO: Add Refresh Method
+// TODO: Add inheritance
+// TODO: Requried on relationships could not be set for containments
+// TODO: N:M tests 
+// TODO: Test loading should just work
+// TODO-T4: IsDelete Casade apply on all 1:m any - event ASSOCIATIONS?
+// TODO-T4: ObjectName should be a second indexed coloum, which is Required
+// TODO-TASL& T4: IsRequired(ERRORMESSAGE), StringLength (Max) [ERRORMESSAGE], MinLength
+// TODO-TASL& T4: Range, RegularExpression, DataType(DataTypeEnum), CustomValidation
+// TODO-TASL& T4: Nullable, AdditionalAttributes with typing support?, UML Profiles?
+// TODO: Add Support for [Required] in TASL and add [MaxLength(50)]  
+// Mix and Match code based and automatic migrations: http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-automatic-migrations-walkthrough.aspx
+// See: http://msdn.microsoft.com/en-us/library/hh161541(v=vs.103).aspx
+// See: http://msdn.microsoft.com/en-us/library/gg197525(v=vs.103).aspx 
+#>
+<#@ template inherits="Microsoft.VisualStudio.TextTemplating.VSHost.ModelingTextTransformation" debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ TangiblePersistentObjectDiagram processor="TangiblePersistentObjectDiagramDirectiveProcessor" requires="fileName='ChannelManager.tasl" provides="PersistentObjectModel"#>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #><#  
+bool EnableDatabinding = true;
+bool EnableLazyLoading = false;
+bool ProxyCreationEnabled=false;
+bool AutoDetectChangesEnabled=true;
+bool ValidateOnSaveEnabled=true;
+GenerateOptimisticConcurrencyTimestamp = false;
+#>
+<#
+PersistentObjectModel om = this.PersistentObjectModel; // make the injected property type known to intellisense
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Linq;
+
+namespace <#= om.Name #>.EF
+{
+	public class ObservableListSource<T> : ObservableCollection<T>, IListSource, ICollection<T> where T : class
+	{
+		private IBindingList _bindingList;
+		bool IListSource.ContainsListCollection { get { return false; } }
+
+		IList IListSource.GetList()
+		{
+			// ToBindingList is defined in the EntityFramework.dll, System.Data.Entity namespace. 
+			return _bindingList ?? (_bindingList = this.ToBindingList());
+		}
+	}
+
+	public partial class <#= om.PersistentRootObject.Name #>Context : DbContext 
+	{
+		string connectionStringName;
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+		  Database.SetInitializer<<#= om.PersistentRootObject.Name #>Context>(
+			new MigrateDatabaseToLatestVersion<<#= om.PersistentRootObject.Name #>Context, Migrations.Configuration>(connectionStringName)
+		  );
+		}
+
+		public <#= om.PersistentRootObject.Name #>Context () 
+		{
+			SetDefaultConfiguration();
+	    }
+
+	    public <#= om.PersistentRootObject.Name #>Context (string ConnectionStringName) : base(ConnectionStringName) 
+		{
+			this.connectionStringName = ConnectionStringName;
+			SetDefaultConfiguration();
+	    }
+
+		protected virtual void SetDefaultConfiguration()
+		{
+			this.Configuration.LazyLoadingEnabled = <#=EnableLazyLoading.ToString().ToLower()#>;
+			this.Configuration.ProxyCreationEnabled = <#=ProxyCreationEnabled.ToString().ToLower()#>;
+			this.Configuration.AutoDetectChangesEnabled = <#=AutoDetectChangesEnabled.ToString().ToLower()#>;
+			this.Configuration.ValidateOnSaveEnabled = <#=ValidateOnSaveEnabled.ToString().ToLower()#>;
+		}
+
+		public virtual DbSet<<#= om.PersistentRootObject.Name #>> <#= om.PersistentRootObject.Name #>s { get; set; }<# 
+		foreach (PersistentObject po in PersistentObjectModel.PersistentObjects)
+		{
+#>
+		
+		public virtual DbSet<<#= po.Name #>> <#= po.Name + (po.Name.EndsWith("s") ? "es" : "s") #> { get; set; }<#
+		} #>
+	
+	}
+<#
+if (EnableDatabinding ==true)  {
+	CollectionType = "ObservableCollection";
+} else{
+	string CollectionType = "ICollection";
+}
+CreateClassForPersistentObject(om.PersistentRootObject);
+// lets Loop over the regular objects
+foreach (PersistentObject aPersistentObject in PersistentObjectModel.PersistentObjects)
+{
+	CreateClassForPersistentObject(aPersistentObject);
+}
+#>
+}
+<#+ 
+
+bool GenerateOptimisticConcurrencyTimestamp { get;set; }
+
+string CollectionType ="";
+void CreateClassForPersistentObject(PersistentObjectBase po)
+{
+    string InitializerCode = "";
+#>
+
+	public partial class <#= po.Name #> <#= po is PersistentObject && ((PersistentObject)po).Superclass != null ? ": " + ((PersistentObject)po).Superclass.Name : "" #>
+	{	
+<#+
+		bool keyFound = false;
+		foreach(Property prop in po.Properties)
+		{
+			if (prop.ObjectName) keyFound = true;
+#>
+		<#= prop.ObjectName ? "[Key]" + GetForeignKey(po) : "" #>
+		<#= prop.Size.HasValue? "[StringLength("+prop.Size.Value +")]" :"" #>
+		public virtual <#= (prop.Type == SupportedType.BLOB ? "byte[]" : prop.Type.ToString()) #> <#= prop.Name #> { get; set; }
+<#+
+		}
+		if (!keyFound && !(po is PersistentObject && (po as PersistentObject).Superclass != null))
+		{
+#>
+		[Key]<#= GetForeignKey(po) #>
+		public virtual Guid Id { get; set; }
+<#+
+		}
+		foreach (PersistentRelation rel in po.Sources.TargetDomainRole.GetElementLinks(po)) {
+			InitializerCode += CreateForwardRelation(po, rel);
+		}
+		foreach (PersistentRelation rel in po.Targets.TargetDomainRole.GetElementLinks(po)) {
+			InitializerCode += CreateBackwardRelation(po, rel); 
+		}
+		
+#>
+		
+		public <#= po.Name #> ()
+		{
+			<#= CollectionType == "ICollection" ? "" : InitializerCode #>
+		}
+<#+
+		if (po is PersistentObject && ((PersistentObject)po).Superclass == null)
+        {
+			if(GenerateOptimisticConcurrencyTimestamp)
+			{
+#>		
+		[Timestamp]
+		public virtual Byte[] RowVersion { get; set; }
+<#+			}
+        }
+#>
+	}
+<#+ 
+}
+
+string CreateForwardRelation(PersistentObjectBase po, PersistentRelation rel)
+{
+	var initCode= "";
+	if(rel is Containment || rel is Association )
+	{
+	    if (rel.TargetMultiplicity == tasl.Dsl.Multiplicity.ZeroMany)
+	    {
+		  initCode= rel.TargetRoleName + " = new " + CollectionType+ "<"+ rel.Target.Name + ">();\r\n\t\t\t";
+
+		// Create Forward Relation to x:n Ends
+#>
+		[InverseProperty("<#=rel.SourceRoleName#>")]
+		public virtual <#=CollectionType#><<#= rel.Target.Name #>> <#= rel.TargetRoleName #> { get; set; }
+<#+
+	    }
+		else
+		{
+
+		// Create Forward Relation to x:1 Ends
+#>
+		[InverseProperty("<#=rel.SourceRoleName#>")]
+		public virtual <#= rel.Target.Name #> <#= rel.TargetRoleName #> { get; set; }
+<#+
+		}
+	}
+	return initCode;
+}
+
+string CreateBackwardRelation(PersistentObjectBase po, PersistentRelation rel)
+{
+	var initCode = "";
+	if(rel is Containment || rel is Association)
+	{	
+		if (rel.SourceMultiplicity == tasl.Dsl.Multiplicity.ZeroMany)
+		{
+		initCode= rel.SourceRoleName + " = new " + CollectionType+ "<"+ rel.Source.Name + ">();\r\n\t\t\t";
+
+	    // Create Backward Relation to n:x Ends
+#>
+		[InverseProperty("<#=rel.TargetRoleName#>")]
+		public virtual <#=CollectionType#><<#= rel.Source.Name #>> <#= rel.SourceRoleName #> { get; set; }<#+
+		}
+		else
+		{
+#>
+<#+		// Create Backward Relation to 1:x Ends
+		if (rel.TargetMultiplicity != tasl.Dsl.Multiplicity.One) {
+#>		
+		[InverseProperty("<#=rel.TargetRoleName#>")]
+<#+	}
+		if (rel is Containment && 1 == 2) {
+#>
+		[Required]
+<#+ }
+#>
+		public virtual <#= rel.Source.Name #> <#= rel.SourceRoleName #> { get; set; }
+<#+
+		}
+	}
+	return initCode;
+}
+///<summary>When an object is target of an 1:1 relation, we need to mark the Key property with the ForeignKey Attribute that points to the parent</summary>
+string GetForeignKey(PersistentObjectBase po)
+{
+	foreach (PersistentRelation rel in po.Targets.TargetDomainRole.GetElementLinks(po)) 
+	{
+		if (rel.SourceMultiplicity == tasl.Dsl.Multiplicity.One && rel.TargetMultiplicity == tasl.Dsl.Multiplicity.One)
+        {
+			return "[ForeignKey(\""+rel.SourceRoleName+"\")]";
+        }
+    }
+	return "";
+}
+#>
