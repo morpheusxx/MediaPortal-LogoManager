@@ -7,6 +7,7 @@ namespace MediaPortal.LogoManager.Design
   [DataContract]
   [KnownType(typeof(EffectGlow))]
   [KnownType(typeof(EffectOuterGlow))]
+  [KnownType(typeof(EffectAutoCrop))]
   [KnownType(typeof(EffectResize))]
   [KnownType(typeof(EffectShadow))]
   public class Theme : Design

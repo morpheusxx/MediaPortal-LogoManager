@@ -12,7 +12,7 @@ namespace MediaPortal.LogoManager.Tester
   {
     // Development service url
     private const string REPOSITORY_URL = "http://channellogos.nocrosshair.de/";
-    private const string DESIGN = "Modern";
+    private const string DESIGN = "Modern-StreamedMP 16x9";
     private static string[] THEMES = new[] { "none", "max" };
 
     static void Main(string[] args)
@@ -32,7 +32,7 @@ namespace MediaPortal.LogoManager.Tester
         using (var repo = new LogoRepository { RepositoryUrl = REPOSITORY_URL })
         {
           // Parallel async processing
-          var results = repo.Download(new[] { "zdf hd", "animal planet hd", "discovery channel" });
+          var results = repo.Download(new[] { "Das Erste hd", "sat.1", "zdf hd", "animal planet hd", "discovery channel" });
           Task.WaitAll(results.Select(channelAndStream => ProcessStream(processor, channelAndStream.Value, channelAndStream.Key, theme)).ToArray());
 
           // Synchronous processing
@@ -49,10 +49,11 @@ namespace MediaPortal.LogoManager.Tester
       // Define list of effects to be applied to source logo, order matters here. Add only effects that are enabled by configuration.
       List<AbstractEffect> effects = new List<AbstractEffect>
       {
-        new EffectResize {TargetSize = new Size(150, 150), MaxSize = new Size(150, 150)},
-        new EffectGlow {Color = Color.Red, Radius = 15},
-        new EffectShadow {Color = Color.Black, Radius = 5, ShadowXOffset = 10, ShadowYOffset = 10},
-        new EffectOuterGlow {Color = Color.Green, Width = 2, Transparency = 0.8f}
+        new EffectAutoCrop(),
+        new EffectResize {TargetSize = new Size(200, 110), MaxSize = new Size(200, 110)},
+        // new EffectGlow {Color = Color.Red, Radius = 15},
+        new EffectShadow {Color = Color.FromArgb(200, 0, 0, 0), Radius = 5, ShadowXOffset = 5, ShadowYOffset = 5},
+        new EffectOuterGlow {Color = Color.Black, Width = 1, Transparency = 0.8f}
       };
 
       ThemeHandler themeHandler = new ThemeHandler();
