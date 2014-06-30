@@ -11,6 +11,9 @@ namespace MediaPortal.LogoManager
 {
   public class LogoRepository : IDisposable
   {
+    // Empty consts for no filtering by region
+    private const string NO_REGION = "";
+
     private readonly HttpClient _httpClient;
 
     public LogoRepository()
@@ -20,27 +23,27 @@ namespace MediaPortal.LogoManager
 
     public string RepositoryUrl { get; set; }
 
-    public Stream Download(string channelName)
+    public Stream Download(string channelName, string regionCode = NO_REGION)
     {
-      var res = Download(new[] { channelName });
+      var res = Download(new[] { channelName }, regionCode);
       return res.ContainsKey(channelName) ? res.Values.First().Result : null;
     }
 
-    public Dictionary<string, Task<Stream>> Download(string[] channelName)
+    public Dictionary<string, Task<Stream>> Download(string[] channelName, string regionCode = NO_REGION)
     {
-      var logoUrls = Lookup(channelName);
+      var logoUrls = Lookup(channelName, regionCode);
       return logoUrls.Result.ToDictionary(logoNameUrl => logoNameUrl.Key, logoNameUrl => DownloadLogoAsync(logoNameUrl.Value));
     }
 
-    public Task<Dictionary<string, string>> Lookup(string channelName)
+    public Task<Dictionary<string, string>> Lookup(string channelName, string regionCode = NO_REGION)
     {
-      return Lookup(new[] { channelName });
+      return Lookup(new[] { channelName }, regionCode);
     }
 
-    public async Task<Dictionary<string, string>> Lookup(string[] channelNames)
+    public async Task<Dictionary<string, string>> Lookup(string[] channelNames, string regionCode = NO_REGION)
     {
       ChannelManagerClient client = new ChannelManagerClient(new BasicHttpBinding(), new EndpointAddress(string.Format("{0}ChannelManager.svc", RepositoryUrl)));
-      return await client.GetLogosAsync(channelNames, string.Empty);
+      return await client.GetLogosAsync(channelNames, regionCode);
     }
 
     private async Task<Stream> DownloadLogoAsync(string logoId)
