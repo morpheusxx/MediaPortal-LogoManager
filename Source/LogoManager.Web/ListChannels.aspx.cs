@@ -11,11 +11,28 @@ namespace ChannelManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+                return;
+
             using (var ctx = new EF.RepositoryContext("LogoDB"))
             {
-                var list = ctx.Channels.Include("Logos").Include("Logos.Suggestion").Include("Aliases").Include("Aliases.Providers").Where(c => c.Suggestion == null).ToList();
-                gvChannels.DataSource = list;
-                gvChannels.DataBind();
+                var list = ctx.Channels.Select(c => c.RegionCode).Distinct().OrderBy(r => r).ToList();
+                ddRegion.DataSource = list;
+                ddRegion.DataBind();
+            }
+        }
+
+        protected void btnShowChannels_Click(object sender, EventArgs e)
+        {
+            string region = ddRegion.SelectedValue;
+            if (!string.IsNullOrWhiteSpace(region))
+            {
+                using (var ctx = new EF.RepositoryContext("LogoDB"))
+                {
+                    var list = ctx.Channels.Include("Logos").Include("Logos.Suggestion").Include("Aliases").Include("Aliases.Providers").Where(c => c.Suggestion == null && c.RegionCode == region).OrderBy(c => c.Name).ToList();
+                    gvChannels.DataSource = list;
+                    gvChannels.DataBind();
+                }
             }
         }
 

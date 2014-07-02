@@ -16,7 +16,7 @@ namespace ChannelManager
 
             using (var ctx = new EF.RepositoryContext("LogoDB"))
             {
-                var list = ctx.Providers.ToList();
+                var list = ctx.Providers.OrderBy(p => p.Name).ToList();
                 ddProviders.DataSource = list;
                 ddProviders.DataBind();
             }

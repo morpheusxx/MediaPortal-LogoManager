@@ -10,33 +10,51 @@
 namespace ChannelManager {
     
     
-    public partial class ListChannels {
+    public partial class FindLogo {
         
         /// <summary>
-        /// ddRegion-Steuerelement
+        /// tbxName-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddRegion;
+        protected global::System.Web.UI.WebControls.TextBox tbxName;
         
         /// <summary>
-        /// btnShowChannels-Steuerelement
+        /// tbxRegion-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowChannels;
+        protected global::System.Web.UI.WebControls.TextBox tbxRegion;
         
         /// <summary>
-        /// gvChannels-Steuerelement
+        /// rblChannelType-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvChannels;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblChannelType;
+        
+        /// <summary>
+        /// btnSearch-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// gvLogos-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvLogos;
     }
 }

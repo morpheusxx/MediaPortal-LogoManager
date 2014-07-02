@@ -3,6 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
+    Region: <asp:DropDownList runat="server" ID="ddRegion" />
+    <asp:Button runat="server" ID="btnShowChannels" Text="Show Channels" OnClick="btnShowChannels_Click" />
+    <br />
     <asp:GridView ID="gvChannels" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Vertical" OnRowDataBound="gvChannels_RowDataBound">
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

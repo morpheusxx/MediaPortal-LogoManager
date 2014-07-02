@@ -7,6 +7,7 @@
     </siteMapNode>
     <siteMapNode url="" title="Channels" description="">
       <siteMapNode url="ListChannels.aspx" title="List All" description="" />
+      <siteMapNode url="FindLogo.aspx" title="Find Logo" description="" />
       <siteMapNode url="ImportMappingFile.aspx" title="Import" description="" />
     </siteMapNode>
     <siteMapNode url="" title="Providers" description="">

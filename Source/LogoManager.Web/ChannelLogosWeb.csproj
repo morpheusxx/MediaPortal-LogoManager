@@ -110,6 +110,7 @@
     <Content Include="ListChannels.aspx" />
     <Content Include="ImportMappingFile.aspx" />
     <Content Include="ListProviders.aspx" />
+    <Content Include="FindLogo.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChannelManager.Master.cs">
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="ListProviders.aspx.designer.cs">
       <DependentUpon>ListProviders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FindLogo.aspx.cs">
+      <DependentUpon>FindLogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FindLogo.aspx.designer.cs">
+      <DependentUpon>FindLogo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
