@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<taslDiagram dslVersion="1.0.0.0" isExpanded="true" absoluteBounds="0, 0, 11.5, 9" isCompleteView="true" name="ChannelManager">
+<taslDiagram dslVersion="1.0.0.0" isExpanded="true" absoluteBounds="0, 0, 11.75, 9" isCompleteView="true" name="ChannelManager">
   <PersistentObjectModelMoniker Name="/ChannelManager" />
   <nestedChildShapes>
-    <persistentRootObjectShape Id="1983d478-d120-43be-a0bd-df32404833df" isExpanded="true" absoluteBounds="2.75, 3.375, 1.75, 1.118779296875">
+    <persistentRootObjectShape Id="1983d478-d120-43be-a0bd-df32404833df" isExpanded="true" absoluteBounds="3, 3.375, 1.75, 1.118779296875">
       <persistentRootObjectMoniker Name="/ChannelManager/Repository" />
       <nestedChildShapes>
-        <elementListCompartment Id="0fe2ffe1-3fb8-4d94-8983-ab800596a4cd" isExpanded="true" absoluteBounds="2.7649999999999997, 3.885, 1.7200000000000002, 0.2493896484375" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="99ab6cb0-9708-404c-91f0-19fe0c9f9f69" isExpanded="true" absoluteBounds="2.7649999999999997, 4.1443896484375, 1.7200000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0fe2ffe1-3fb8-4d94-8983-ab800596a4cd" isExpanded="true" absoluteBounds="3.0149999999999997, 3.885, 1.7200000000000002, 0.2493896484375" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="99ab6cb0-9708-404c-91f0-19fe0c9f9f69" isExpanded="true" absoluteBounds="3.0149999999999997, 4.1443896484375, 1.7200000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentRootObjectShape>
     <persistentObjectShape Id="bd17677d-1777-4c22-854d-7360d2b97b73" isExpanded="true" absoluteBounds="0.875, 0.5, 1.5, 1.8879850260416662">
@@ -16,7 +16,7 @@
         <elementListCompartment Id="6b79263f-b071-4c01-94d4-be0365f0dda6" isExpanded="true" absoluteBounds="0.89000000000000012, 2.0385953776041665, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <containmentConnector edgePoints="[(3.15625 : 3.375); (3.15625 : 1.69042816433759); (2.375 : 1.69042816433759)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <containmentConnector edgePoints="[(3.31266456478427 : 3.375); (3.31266456478427 : 1.67999314127604); (2.375 : 1.67999314127604)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <ContainmentMoniker Id="0b6e4cba-b574-442d-bcdb-5bd86044363e" />
       <relativeChildShapes />
       <nodes>
@@ -24,42 +24,42 @@
         <persistentObjectShapeMoniker Id="bd17677d-1777-4c22-854d-7360d2b97b73" />
       </nodes>
     </containmentConnector>
-    <persistentObjectShape Id="8e36ae7f-48b1-4302-9406-deaceb6f62a0" isExpanded="true" absoluteBounds="0.875, 5.125, 1.625, 1.3110807291666666">
+    <persistentObjectShape Id="8e36ae7f-48b1-4302-9406-deaceb6f62a0" isExpanded="true" absoluteBounds="1.125, 5.5, 1.625, 1.3110807291666666">
       <PersistentObjectMoniker Name="/ChannelManager/Role" />
       <nestedChildShapes>
-        <elementListCompartment Id="a74dcbac-cccf-4bdf-8c3f-3f18372be043" isExpanded="true" absoluteBounds="0.89000000000000012, 5.635, 1.5950000000000002, 0.44169108072916663" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="f13360c0-60a9-4df5-83e6-b7b6351fee9a" isExpanded="true" absoluteBounds="0.89000000000000012, 6.0866910807291665, 1.5950000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a74dcbac-cccf-4bdf-8c3f-3f18372be043" isExpanded="true" absoluteBounds="1.1400000000000001, 6.01, 1.5950000000000002, 0.44169108072916663" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f13360c0-60a9-4df5-83e6-b7b6351fee9a" isExpanded="true" absoluteBounds="1.1400000000000001, 6.4616910807291665, 1.5950000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <persistentObjectShape Id="5508a0ec-a687-46e2-85b7-a766048f895c" isExpanded="true" absoluteBounds="5.75, 0.5, 2, 1.69568359375">
+    <persistentObjectShape Id="5508a0ec-a687-46e2-85b7-a766048f895c" isExpanded="true" absoluteBounds="6, 0.5, 2, 2.272587890625">
       <PersistentObjectMoniker Name="/ChannelManager/Logo" />
       <nestedChildShapes>
-        <elementListCompartment Id="7751ac41-fe83-48ac-b502-da0d04faeecb" isExpanded="true" absoluteBounds="5.765, 1.01, 1.9700000000000002, 0.8262939453125" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="aa34c4c5-69fe-4ff3-b3cf-b9a206df3c48" isExpanded="true" absoluteBounds="5.765, 1.8462939453125, 1.9700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7751ac41-fe83-48ac-b502-da0d04faeecb" isExpanded="true" absoluteBounds="6.015, 1.01, 1.9700000000000002, 1.4031982421875" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="aa34c4c5-69fe-4ff3-b3cf-b9a206df3c48" isExpanded="true" absoluteBounds="6.015, 2.4231982421875, 1.9700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <persistentObjectShape Id="294f1db6-6ba0-4cd1-8bc9-f702d1dfb54b" isExpanded="true" absoluteBounds="9, 2.25, 1.5, 2.0802864583333331">
+    <persistentObjectShape Id="294f1db6-6ba0-4cd1-8bc9-f702d1dfb54b" isExpanded="true" absoluteBounds="9.25, 2.625, 1.5, 2.0802864583333331">
       <PersistentObjectMoniker Name="/ChannelManager/Channel" />
       <nestedChildShapes>
-        <elementListCompartment Id="baf736cc-ff94-45fd-a3dd-f8f0757b8510" isExpanded="true" absoluteBounds="9.015, 2.76, 1.4700000000000002, 1.2108968098958333" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="910ccbf0-1c8a-4c3e-b783-468684c543d8" isExpanded="true" absoluteBounds="9.015, 3.9808968098958335, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="baf736cc-ff94-45fd-a3dd-f8f0757b8510" isExpanded="true" absoluteBounds="9.265, 3.135, 1.4700000000000002, 1.2108968098958333" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="910ccbf0-1c8a-4c3e-b783-468684c543d8" isExpanded="true" absoluteBounds="9.265, 4.3558968098958335, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <persistentObjectShape Id="bf544943-5fac-4895-aa30-557daade91f5" isExpanded="true" absoluteBounds="6.875, 4.25, 1.5, 1.5033821614583331">
+    <persistentObjectShape Id="bf544943-5fac-4895-aa30-557daade91f5" isExpanded="true" absoluteBounds="7.125, 4.625, 1.5, 1.5033821614583331">
       <PersistentObjectMoniker Name="/ChannelManager/Alias" />
       <nestedChildShapes>
-        <elementListCompartment Id="852c9b1a-fd7e-428b-a0bd-8ededa59ca9e" isExpanded="true" absoluteBounds="6.8900000000000006, 4.76, 1.4700000000000002, 0.63399251302083326" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="e97a94f4-d852-48f1-ade8-0603236f95fe" isExpanded="true" absoluteBounds="6.8900000000000006, 5.4039925130208335, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="852c9b1a-fd7e-428b-a0bd-8ededa59ca9e" isExpanded="true" absoluteBounds="7.1400000000000006, 5.135, 1.4700000000000002, 0.63399251302083326" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e97a94f4-d852-48f1-ade8-0603236f95fe" isExpanded="true" absoluteBounds="7.1400000000000006, 5.7789925130208335, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <persistentObjectShape Id="faf7ba38-3c69-40e5-a5ab-81ea5eb64554" isExpanded="true" absoluteBounds="6.75, 6.375, 1.75, 1.6956835937499992">
+    <persistentObjectShape Id="faf7ba38-3c69-40e5-a5ab-81ea5eb64554" isExpanded="true" absoluteBounds="7, 7, 1.75, 1.6956835937499992">
       <PersistentObjectMoniker Name="/ChannelManager/Suggestion" />
       <nestedChildShapes>
-        <elementListCompartment Id="b3cb442e-824b-412f-bf7f-3017913f87b9" isExpanded="true" absoluteBounds="6.7650000000000006, 6.885, 1.7200000000000002, 0.8262939453125" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="0c9731b3-c791-4a3b-b7b2-e9dcdf1e69ae" isExpanded="true" absoluteBounds="6.765, 7.7212939453125, 1.7200000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b3cb442e-824b-412f-bf7f-3017913f87b9" isExpanded="true" absoluteBounds="7.0150000000000006, 7.51, 1.7200000000000002, 0.8262939453125" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0c9731b3-c791-4a3b-b7b2-e9dcdf1e69ae" isExpanded="true" absoluteBounds="7.015, 8.3462939453125, 1.7200000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <containmentConnector edgePoints="[(4.5 : 3.46806366711128); (5.34958333333333 : 3.46806366711128); (5.34958333333333 : 2.54149739583333); (9 : 2.54149739583333)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller">
+    <containmentConnector edgePoints="[(4.75 : 3.60541837668117); (5.125 : 3.60541837668117); (5.125 : 3.61660572916667); (9.25 : 3.61660572916667)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller">
       <ContainmentMoniker Id="690d53bb-fc93-4988-84ba-ab5a538bb5db" />
       <relativeChildShapes />
       <nodes>
@@ -67,7 +67,7 @@
         <persistentObjectShapeMoniker Id="294f1db6-6ba0-4cd1-8bc9-f702d1dfb54b" />
       </nodes>
     </containmentConnector>
-    <containmentConnector edgePoints="[(9.07128523672405 : 4.33028645833333); (9.07128523672405 : 5.04183480989583); (8.375 : 5.04183480989583)]" manuallyRouted="false" fixedFrom="Caller" fixedTo="Algorithm">
+    <containmentConnector edgePoints="[(9.48570786928754 : 4.70528645833333); (9.48570786928754 : 5.41683480989583); (8.625 : 5.41683480989583)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <ContainmentMoniker Id="53e9525b-2ba5-4d9d-b12b-23af1eaf725b" />
       <relativeChildShapes />
       <nodes>
@@ -75,7 +75,7 @@
         <persistentObjectShapeMoniker Id="bf544943-5fac-4895-aa30-557daade91f5" />
       </nodes>
     </containmentConnector>
-    <containmentConnector edgePoints="[(3.14842727353404 : 4.493779296875); (3.14842727353404 : 5.78054036458333); (2.5 : 5.78054036458333)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <containmentConnector edgePoints="[(3.3285133363955 : 4.493779296875); (3.3285133363955 : 6.15554036458333); (2.75 : 6.15554036458333)]" manuallyRouted="false" fixedFrom="Caller" fixedTo="Algorithm">
       <ContainmentMoniker Id="f77ff38e-6427-41f1-8762-9866fe03b77e" />
       <relativeChildShapes />
       <nodes>
@@ -83,7 +83,7 @@
         <persistentObjectShapeMoniker Id="8e36ae7f-48b1-4302-9406-deaceb6f62a0" />
       </nodes>
     </containmentConnector>
-    <associationConnector edgePoints="[(1.625 : 2.38798502604167); (1.625 : 5.125)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.10941518604912 : 2.38798502604167); (1.10941518604912 : 2.76298502604167); (1.9375 : 2.76298502604167); (1.9375 : 5.5)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="aa52c53a-1f56-461e-a503-56481b31ebbf" />
       <relativeChildShapes />
       <nodes>
@@ -91,7 +91,7 @@
         <persistentObjectShapeMoniker Id="8e36ae7f-48b1-4302-9406-deaceb6f62a0" />
       </nodes>
     </associationConnector>
-    <containmentConnector edgePoints="[(4.26185926608932 : 3.375); (4.26185926608932 : 1.59427744819175); (5.75 : 1.59427744819175)]" manuallyRouted="false" fixedFrom="Caller" fixedTo="Algorithm">
+    <containmentConnector edgePoints="[(4.52779037470645 : 3.375); (4.52779037470645 : 1.75985105738147); (6 : 1.75985105738147)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <ContainmentMoniker Id="32a51eec-9339-40be-b378-0e83fd32f1d7" />
       <relativeChildShapes />
       <nodes>
@@ -99,7 +99,7 @@
         <persistentObjectShapeMoniker Id="5508a0ec-a687-46e2-85b7-a766048f895c" />
       </nodes>
     </containmentConnector>
-    <associationConnector edgePoints="[(7.75 : 1.72965975466502); (9.75 : 1.72965975466502); (9.75 : 2.25)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8 : 2.0635865948392); (10 : 2.0635865948392); (10 : 2.625)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="d85ebf56-fd2a-464d-b0c9-bf77f229b99a" />
       <relativeChildShapes />
       <nodes>
@@ -107,7 +107,7 @@
         <persistentObjectShapeMoniker Id="294f1db6-6ba0-4cd1-8bc9-f702d1dfb54b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.375 : 0.930366302633509); (5.75 : 0.930366302633509)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.375 : 0.909496256510417); (6 : 0.909496256510417)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="7bc62b10-d440-4f5e-9878-f053380a57f5" />
       <relativeChildShapes />
       <nodes>
@@ -115,7 +115,7 @@
         <persistentObjectShapeMoniker Id="5508a0ec-a687-46e2-85b7-a766048f895c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(0.875 : 1.28574024487567); (0.291666666666667 : 1.28574024487567); (0.291666666666667 : 8.44568359375); (7.70433967180721 : 8.44568359375); (7.70433967180721 : 8.07068359375)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(0.875 : 0.743868676584663); (0.15625 : 0.743868676584663); (0.15625 : 8.55002600244729); (7 : 8.55002600244729)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="1b4292e6-4881-4711-aa51-2dcc5e99b4de" />
       <relativeChildShapes />
       <nodes>
@@ -123,7 +123,7 @@
         <persistentObjectShapeMoniker Id="faf7ba38-3c69-40e5-a5ab-81ea5eb64554" />
       </nodes>
     </associationConnector>
-    <containmentConnector edgePoints="[(4.34375 : 4.493779296875); (4.34375 : 6.53125); (6.75 : 6.53125)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <containmentConnector edgePoints="[(4.343752 : 4.493779296875); (4.343752 : 6.625); (4.625 : 6.625); (4.625 : 7.13797008167614); (7 : 7.13797008167614)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Caller">
       <ContainmentMoniker Id="85aa7a6f-bfb7-484e-9ea6-50d0c23cab76" />
       <relativeChildShapes />
       <nodes>
@@ -131,7 +131,7 @@
         <persistentObjectShapeMoniker Id="faf7ba38-3c69-40e5-a5ab-81ea5eb64554" />
       </nodes>
     </containmentConnector>
-    <associationConnector edgePoints="[(7.625 : 6.375); (7.625 : 5.75338216145833)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.875 : 7); (7.875 : 6.12838216145833)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="5e796723-5f28-4e4c-83c1-630973471bb2" />
       <relativeChildShapes />
       <nodes>
@@ -139,7 +139,7 @@
         <persistentObjectShapeMoniker Id="bf544943-5fac-4895-aa30-557daade91f5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 7.26762456400853); (10.9479166666667 : 7.26762456400853); (10.9479166666667 : 1.20113091558004); (7.75 : 1.20113091558004)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.75 : 7.89262456400853); (11.25 : 7.89262456400853); (11.25 : 1.4396691896784); (8 : 1.4396691896784)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="4ff2b1e8-de3e-4789-977a-7c042d6f2740" />
       <relativeChildShapes />
       <nodes>
@@ -147,14 +147,14 @@
         <persistentObjectShapeMoniker Id="5508a0ec-a687-46e2-85b7-a766048f895c" />
       </nodes>
     </associationConnector>
-    <persistentObjectShape Id="77acd416-0f35-4e00-afae-ba04c4646835" isExpanded="true" absoluteBounds="2.625, 6.75, 1.5, 1.5033821614583331">
+    <persistentObjectShape Id="77acd416-0f35-4e00-afae-ba04c4646835" isExpanded="true" absoluteBounds="2.875, 6.875, 1.5, 1.5033821614583331">
       <PersistentObjectMoniker Name="/ChannelManager/Message" />
       <nestedChildShapes>
-        <elementListCompartment Id="a8089d1a-20c3-422b-918b-cf4635501ead" isExpanded="true" absoluteBounds="2.6400000000000006, 7.26, 1.4700000000000002, 0.63399251302083326" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="b36d49a8-26eb-455f-9f2b-f8b71f2dbef1" isExpanded="true" absoluteBounds="2.6400000000000006, 7.9039925130208335, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a8089d1a-20c3-422b-918b-cf4635501ead" isExpanded="true" absoluteBounds="2.8900000000000006, 7.385, 1.4700000000000002, 0.63399251302083326" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b36d49a8-26eb-455f-9f2b-f8b71f2dbef1" isExpanded="true" absoluteBounds="2.8900000000000006, 8.0289925130208335, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <containmentConnector edgePoints="[(6.75 : 7.410341796875); (4.125 : 7.410341796875)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <containmentConnector edgePoints="[(7 : 7.86525034265351); (4.375 : 7.86525034265351)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <ContainmentMoniker Id="52f1be20-6119-447b-bda3-07d8d5a1caa4" />
       <relativeChildShapes />
       <nodes>
@@ -162,7 +162,7 @@
         <persistentObjectShapeMoniker Id="77acd416-0f35-4e00-afae-ba04c4646835" />
       </nodes>
     </containmentConnector>
-    <associationConnector edgePoints="[(0.875 : 2.05774296723595); (0.5 : 2.05774296723595); (0.5 : 7.50169108072917); (2.625 : 7.50169108072917)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(0.875 : 1.34850222388532); (0.5 : 1.34850222388532); (0.5 : 7.54158972027658); (2.875 : 7.54158972027658)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="6c849be2-df15-4faf-877d-e72cf720562f" />
       <relativeChildShapes />
       <nodes>
@@ -170,7 +170,7 @@
         <persistentObjectShapeMoniker Id="77acd416-0f35-4e00-afae-ba04c4646835" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 6.85965935202206); (10.2425212094308 : 6.85965935202206); (10.2425212094308 : 4.33028645833333)]" manuallyRouted="false" fixedFrom="Caller" fixedTo="Caller">
+    <associationConnector edgePoints="[(8.75 : 7.41505978200427); (10.5061038152096 : 7.41505978200427); (10.5061038152096 : 4.70528645833333)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Id="c2ab81bc-fd14-4c66-834f-6b55bcfe6074" />
       <relativeChildShapes />
       <nodes>
@@ -178,14 +178,14 @@
         <persistentObjectShapeMoniker Id="294f1db6-6ba0-4cd1-8bc9-f702d1dfb54b" />
       </nodes>
     </associationConnector>
-    <persistentObjectShape Id="98bfa762-8f46-4ee8-a26c-44bb9871d9b4" isExpanded="true" absoluteBounds="5.875, 2.75, 1.5, 1.3110807291666662">
+    <persistentObjectShape Id="98bfa762-8f46-4ee8-a26c-44bb9871d9b4" isExpanded="true" absoluteBounds="5.25, 4.5, 1.5, 1.6956835937499992">
       <PersistentObjectMoniker Name="/ChannelManager/Provider" />
       <nestedChildShapes>
-        <elementListCompartment Id="4061a189-7319-459d-b0d6-cf6f0483fd5c" isExpanded="true" absoluteBounds="5.8900000000000006, 3.26, 1.4700000000000002, 0.44169108072916663" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="0e685659-b61c-49a6-8ec8-4b5df0680d09" isExpanded="true" absoluteBounds="5.8900000000000006, 3.7116910807291665, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4061a189-7319-459d-b0d6-cf6f0483fd5c" isExpanded="true" absoluteBounds="5.2650000000000006, 5.01, 1.4700000000000002, 0.8262939453125" name="PropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0e685659-b61c-49a6-8ec8-4b5df0680d09" isExpanded="true" absoluteBounds="5.265, 5.8462939453125, 1.4700000000000002, 0.2493896484375" name="MethodsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </persistentObjectShape>
-    <containmentConnector edgePoints="[(4.5 : 3.97046801757813); (5.875 : 3.97046801757813)]" manuallyRouted="false" fixedFrom="Caller" fixedTo="Algorithm">
+    <containmentConnector edgePoints="[(4.75 : 4.04609741210937); (5.51944162628859 : 4.04609741210937); (5.51944162628859 : 4.5)]" manuallyRouted="false" fixedFrom="Caller" fixedTo="Caller">
       <ContainmentMoniker Id="a8b2d884-7358-43bd-9f95-49f4c017d856" />
       <relativeChildShapes />
       <nodes>
@@ -193,7 +193,7 @@
         <persistentObjectShapeMoniker Id="98bfa762-8f46-4ee8-a26c-44bb9871d9b4" />
       </nodes>
     </containmentConnector>
-    <associationConnector edgePoints="[(8.16067985371723 : 4.25); (8.16067985371723 : 3.26417991199713); (7.375 : 3.26417991199713)]" manuallyRouted="false" fixedFrom="Caller" fixedTo="Caller">
+    <associationConnector edgePoints="[(7.96159840633386 : 4.625); (7.96159840633386 : 4.02083333333333); (6.69134545842905 : 4.02083333333333); (6.69134545842905 : 4.5)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller">
       <AssociationMoniker Id="788defae-d657-44fa-8b4a-cd08a8f5b586" />
       <relativeChildShapes />
       <nodes>

@@ -94,7 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ChannelManager.svc" />
+    <Content Include="default.css" />
     <Content Include="Images\delete.png" />
+    <Content Include="Images\help.png" />
     <Content Include="Images\loading.gif" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

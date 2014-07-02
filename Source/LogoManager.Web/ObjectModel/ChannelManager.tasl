@@ -104,6 +104,15 @@
         <Property Id="c03a1367-0acd-4dbd-be20-7004cda097a2" Name="Origin" type="String" defaultValue="" nameAndType="Origin : String" objectName="false" size="" cachedBLOB="false">
           <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
         </Property>
+        <Property Id="9bbbb021-3748-4b31-bb2c-cfa6f36e3dfe" Name="Width" type="Int32" defaultValue="" nameAndType="Width : Int32" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="f03b2ba3-65a6-472a-97e5-9f7f3184d678" Name="Height" type="Int32" defaultValue="" nameAndType="Height : Int32" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="dfc08b62-63d8-4efe-ab51-5d0f826de920" Name="SizeInBytes" type="Int32" defaultValue="" nameAndType="SizeInBytes : Int32" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
       </Properties>
       <AssociationTargets>
         <Association Id="d85ebf56-fd2a-464d-b0c9-bf77f229b99a" sourceMultiplicity="ZeroMany" sourceRoleName="Logos" targetMultiplicity="ZeroMany" targetRoleName="Channels" name="Logos_associate_Channels" uniqueNaming="false" autoSourceRoleName="true" autoTargetRoleName="true" autoName="true">
@@ -204,6 +213,12 @@
       <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
       <Properties>
         <Property Id="7a107a6a-5dac-47b4-8659-7a90dd6a0449" Name="Name" type="String" defaultValue="" nameAndType="Name : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="2a3b7a8f-39f8-48ab-a469-bc31dcb3a752" Name="Info" type="String" defaultValue="" nameAndType="Info : String" objectName="false" size="" cachedBLOB="false">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Property>
+        <Property Id="a7d2284e-b3dd-4540-a98a-b3c763a798b8" Name="Type" type="String" defaultValue="" nameAndType="Type : String" objectName="false" size="" cachedBLOB="false">
           <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
         </Property>
       </Properties>

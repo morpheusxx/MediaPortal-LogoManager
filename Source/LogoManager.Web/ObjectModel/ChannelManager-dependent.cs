@@ -160,6 +160,15 @@ namespace ChannelManager.EF
 		
 		
 		public virtual String Origin { get; set; }
+		
+		
+		public virtual Int32 Width { get; set; }
+		
+		
+		public virtual Int32 Height { get; set; }
+		
+		
+		public virtual Int32 SizeInBytes { get; set; }
 		[Key]
 		public virtual Guid Id { get; set; }
 		[InverseProperty("Logos")]
@@ -310,6 +319,12 @@ namespace ChannelManager.EF
 		
 		
 		public virtual String Name { get; set; }
+		
+		
+		public virtual String Info { get; set; }
+		
+		
+		public virtual String Type { get; set; }
 		[Key]
 		public virtual Guid Id { get; set; }
 		[InverseProperty("Providers")]

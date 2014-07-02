@@ -39,12 +39,13 @@ namespace ChannelManager
                     if (TabContainer1.ActiveTab == tabPanelNewChannel)
                     {
                         string channelName = tbxChannelName.Text.Trim();
+                        byte channelType = byte.Parse(rblChannelType.SelectedValue);
 
                         if (string.IsNullOrEmpty(channelName))
                             throw new Exception("Please give the new Channel an unique name!");
 
-                        if (ctx.Channels.Any(c => c.Name == channelName))
-                            throw new Exception(string.Format("Channel '{0}' already exists!", channelName));
+                        if (ctx.Channels.Any(c => c.Name == channelName && c.Type == channelType))
+                            throw new Exception(string.Format("A {1}-Channel '{0}' already exists!", channelName, channelType == 0 ? "TV" : "Radio"));
 
                         string channelWebsite = tbxChannelWebsite.Text.Trim();
                         if (!string.IsNullOrEmpty(channelWebsite) && !channelWebsite.Contains("://"))
@@ -57,7 +58,7 @@ namespace ChannelManager
                         channel.Website = channelWebsite;
                         channel.RegionCode = ddlChannelRegion.SelectedValue;
                         channel.Description = tbxChannelDescription.Text.Trim();
-                        channel.Type = byte.Parse(rblChannelType.SelectedValue);
+                        channel.Type = channelType;
                         repo.Channels.Add(channel);
                     }
                     else
@@ -91,20 +92,36 @@ namespace ChannelManager
 
                     if (uploadLogoFile.HasFile)
                     {
-                        // todo : check file is PNG and has required dimensions
-
-                        var logo = ctx.Logos.Create();
-                        logo.Id = Guid.NewGuid();
-                        logo.Name = tbxLogoName.Text.Trim();
-                        if (string.IsNullOrEmpty(logo.Name))
-                            throw new Exception("Please give the new Logo an unique name!");
-                        logo.Origin = tbxLogoOrigin.Text.Trim();
-                        logo.LastModified = DateTime.Now;
-                        repo.Logos.Add(logo);
-                        logo.Suggestion = suggestion;
-                        logo.Creator = suggestion.User;
-                        logo.Channels.Add(channel);
-                        uploadLogoFile.SaveAs(Path.Combine(Server.MapPath("~/Logos"), logo.Id + ".png"));
+                        // check that file is PNG
+                        byte[] logoData = uploadLogoFile.FileBytes;
+                        using (MemoryStream ms = new MemoryStream(logoData))
+                        {
+                            using (System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true, true))
+                            {
+                                if (image.RawFormat.Guid != System.Drawing.Imaging.ImageFormat.Png.Guid)
+                                {
+                                    throw new Exception("The supplied Logo file is not a valid PNG image!");
+                                }
+                                else
+                                {
+                                    var logo = ctx.Logos.Create();
+                                    logo.Id = Guid.NewGuid();
+                                    logo.Name = tbxLogoName.Text.Trim();
+                                    if (string.IsNullOrEmpty(logo.Name))
+                                        throw new Exception("Please give the new Logo an unique name!");
+                                    logo.Origin = tbxLogoOrigin.Text.Trim();
+                                    logo.LastModified = DateTime.Now;
+                                    logo.Width = image.Width;
+                                    logo.Height = image.Height;
+                                    logo.SizeInBytes = logoData.Length;
+                                    repo.Logos.Add(logo);
+                                    logo.Suggestion = suggestion;
+                                    logo.Creator = suggestion.User;
+                                    logo.Channels.Add(channel);
+                                    File.WriteAllBytes(Path.Combine(Server.MapPath("~/Logos"), logo.Id + ".png"), logoData);
+                                }
+                            }
+                        }
                     }
 
                     ctx.ChangeTracker.DetectChanges();

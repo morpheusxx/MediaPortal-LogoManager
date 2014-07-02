@@ -25,7 +25,13 @@
             <asp:BoundField DataField="RegionCode" HeaderText="Region" />
             <asp:TemplateField HeaderText="Logo">
                 <ItemTemplate>
-                    <asp:Image ImageUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id + ".png" %>' runat="server" Width="48px" />
+                    <div style="float:left">
+                        <asp:Image ImageUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id + ".png" %>' runat="server" Width="48px" CssClass="logothumb" />
+                    </div>
+                    <div style="float:right;font-size:smaller;margin-top:10px;margin-left:5px">
+                        <%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Width %>x<%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Height %><br />
+                        <%# (((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).SizeInBytes / 1024.0).ToString("F1") %> KB
+                    </div>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Aliases">
@@ -33,7 +39,7 @@
                     <asp:Repeater runat="server" ID="repeatAliases">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Eval("Name") %>'/>
-                            <asp:Label runat="server" Text='<%# string.Format("({0})", string.Join(", ", ((IList<ChannelManager.EF.Provider>)Eval("Providers")).Select(a => a.Name))) %>' Visible='<%# (int)Eval("Providers.Count") > 0 %>'/>
+                            <asp:Label runat="server" Text='<%# string.Format("({0})", string.Join(", ", ((IList<ChannelManager.EF.Provider>)Eval("Providers")).Select(a => a.Name))) %>' Visible='<%# (int)Eval("Providers.Count") > 0 %>' CssClass="provider"/>
                             <br />
                         </ItemTemplate>
                     </asp:Repeater>

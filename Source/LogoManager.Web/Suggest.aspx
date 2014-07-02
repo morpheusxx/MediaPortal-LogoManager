@@ -337,14 +337,14 @@
     <div style="width:482px;border:1px solid #999999;padding:8px">
     <table style="width:100%">
         <tr>
-            <td style="width:100px">Name</td>
+            <td style="width:100px">Name&nbsp;<asp:Image runat="server" ImageUrl="~/Images/help.png" ToolTip="A single logo might be assigned to different channels.&#013;Give this logo a name to identify what it represents." /></td>
             <td>
-                <asp:TextBox ID="tbxLogoName" runat="server" Width="100%"></asp:TextBox></td>
+                <asp:TextBox ID="tbxLogoName" runat="server" Width="100%" /></td>
         </tr>
         <tr>
-            <td>Origin</td>
+            <td>Origin&nbsp;<asp:Image runat="server" ImageUrl="~/Images/help.png" ToolTip="Simply for documentation purposes, where does the image come from?&#013;E.g. Wikipedia, Channel Homepage, Self-Painted, ..." /></td>
             <td>
-                <asp:TextBox ID="tbxLogoOrigin" runat="server" TextMode="MultiLine" Width="100%" ToolTip="Where does the logo image come from?" />
+                <asp:TextBox ID="tbxLogoOrigin" runat="server" TextMode="MultiLine" Width="100%" />
             </td>
         </tr>
         <tr>
@@ -356,7 +356,7 @@
     </div>
 
     <h3>Aliases</h3>
-    <div style="width:482px;border:1px solid #999999;padding:8px">
+    <div style="width:482px;border:1px solid #999999;padding-left:8px;padding-right:8px;padding-top:4px;padding-bottom:4px">
         <asp:UpdatePanel ID="UpdatePanelAliases" runat="server">
             <ContentTemplate>
                 <table style="width:100%">
@@ -378,10 +378,10 @@
         </asp:UpdatePanel>
     </div>
 
-    <h3>Info</h3>
+    <h3>Message to Admin</h3>
     <asp:TextBox ID="tbxSuggestionInfo" runat="server" TextMode="MultiLine" Rows="5" Width="495px"></asp:TextBox>    
 
     <br />
     <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" /><br />
-    <asp:Label ID="lblReturnMessage" runat="server" Visible="false" />
+    <asp:Label ID="lblReturnMessage" runat="server" Visible="false" ForeColor="Red" />
 </asp:Content>

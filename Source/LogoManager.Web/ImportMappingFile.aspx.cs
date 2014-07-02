@@ -20,58 +20,73 @@ namespace ChannelManager
         {
             var errors = new List<string>();
 
-            var mappings = new XmlDocument();
-            mappings.Load(tbxUrl.Text);
-
-            var xmlTvChannels = new List<Tuple<Dictionary<string, HashSet<string>>, string, Guid>>();
-            var xmlRadioChannels = new List<Tuple<Dictionary<string, HashSet<string>>, string, Guid>>();
-
-            var tvChannels = mappings.SelectSingleNode("Mappings/TV");
-            foreach (XmlElement tvChannel in tvChannels.SelectNodes("Channel"))
+            try
             {
-                var xmlTvChannel = GetChannel(tvChannel, 0, ref errors);
-                if (xmlTvChannel != null)
-                    xmlTvChannels.Add(xmlTvChannel);
-            }
+                if (!Uri.IsWellFormedUriString(tbxUrl.Text, UriKind.Absolute))
+                    errors.Add("Mapping File Url is not a valid Url!");
+                if (!Uri.IsWellFormedUriString(tbxRadioLogosBaseUrl.Text, UriKind.Absolute))
+                    errors.Add("Radio Logos Base Url is not a valid Url!");
+                if (!Uri.IsWellFormedUriString(tbxTVLogosBaseUrl.Text, UriKind.Absolute))
+                    errors.Add("TV Logos Base Url is not a valid Url!");
+                if (!tbxUrl.Text.ToLower().EndsWith(".xml"))
+                    errors.Add("Mapping File Url must point to a xml file!");
 
-            var radioChannels = mappings.SelectSingleNode("Mappings/Radio");
-            foreach (XmlElement radioChannel in radioChannels.SelectNodes("Channel"))
-            {
-                var xmlRadioChannel = GetChannel(radioChannel, 1, ref errors);
-                if (xmlRadioChannel != null)
-                    xmlRadioChannels.Add(xmlRadioChannel);
-            }
+                var mappings = new XmlDocument();
+                mappings.Load(tbxUrl.Text);
 
-            using (var ctx = new EF.RepositoryContext("LogoDB"))
-            {
-                EF.User currentUser = null;
-                var membership = System.Web.Security.Membership.GetUser();
-                if (membership != null)
-                    currentUser = ctx.Users.FirstOrDefault(u => u.Id == (Guid)membership.ProviderUserKey);
+                var xmlTvChannels = new List<Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo>>();
+                var xmlRadioChannels = new List<Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo>>();
 
-                var repo = ctx.Repositorys.FirstOrDefault();
-
-                var allProviders = ctx.Providers.ToDictionary(p => p.Name, p => p);
-
-                foreach (var importChannel in xmlTvChannels)
+                using (var ctx = new EF.RepositoryContext("LogoDB"))
                 {
-                    CreateDbChannel(importChannel, 0, ctx, repo, currentUser, allProviders);
-                }
-                foreach (var importChannel in xmlRadioChannels)
-                {
-                    CreateDbChannel(importChannel, 1, ctx, repo, currentUser, allProviders);
-                }
+                    var tvChannels = mappings.SelectSingleNode("Mappings/TV");
+                    foreach (XmlElement tvChannel in tvChannels.SelectNodes("Channel"))
+                    {
+                        var xmlTvChannel = GetChannel(tvChannel, 0, ctx, ref errors);
+                        if (xmlTvChannel != null)
+                            xmlTvChannels.Add(xmlTvChannel);
+                    }
 
-                ctx.ChangeTracker.DetectChanges();
-                ctx.SaveChanges();
+                    var radioChannels = mappings.SelectSingleNode("Mappings/Radio");
+                    foreach (XmlElement radioChannel in radioChannels.SelectNodes("Channel"))
+                    {
+                        var xmlRadioChannel = GetChannel(radioChannel, 1, ctx, ref errors);
+                        if (xmlRadioChannel != null)
+                            xmlRadioChannels.Add(xmlRadioChannel);
+                    }
+
+                    EF.User currentUser = null;
+                    var membership = System.Web.Security.Membership.GetUser();
+                    if (membership != null)
+                        currentUser = ctx.Users.FirstOrDefault(u => u.Id == (Guid)membership.ProviderUserKey);
+
+                    var repo = ctx.Repositorys.FirstOrDefault();
+
+                    var allProviders = ctx.Providers.ToDictionary(p => p.Name, p => p);
+
+                    foreach (var importChannel in xmlTvChannels)
+                    {
+                        CreateDbChannel(importChannel, 0, ctx, repo, currentUser, allProviders);
+                    }
+                    foreach (var importChannel in xmlRadioChannels)
+                    {
+                        CreateDbChannel(importChannel, 1, ctx, repo, currentUser, allProviders);
+                    }
+
+                    ctx.ChangeTracker.DetectChanges();
+                    ctx.SaveChanges();
+                }
             }
-
+            catch (Exception ex)
+            {
+                errors.Add(ex.Message);
+            }
             listErrors.DataSource = errors;
             listErrors.DataBind();
             listErrors.Visible = errors.Count > 0;
         }
 
-        void CreateDbChannel(Tuple<Dictionary<string, HashSet<string>>, string, Guid> importChannel, byte channelType, EF.RepositoryContext ctx, EF.Repository repo, EF.User user, Dictionary<string, EF.Provider> knownProviders)
+        void CreateDbChannel(Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo> importChannel, byte channelType, EF.RepositoryContext ctx, EF.Repository repo, EF.User user, Dictionary<string, EF.Provider> knownProviders)
         {
             var channel = ctx.Channels.Create();
             channel.Id = Guid.NewGuid();
@@ -80,11 +95,8 @@ namespace ChannelManager
             channel.RegionCode = ddlChannelRegion.SelectedValue;
             repo.Channels.Add(channel);
 
-            var logo = ctx.Logos.Create();
+            var logo = importChannel.Item3;
             logo.Creator = user;
-            logo.Id = importChannel.Item3;
-            logo.LastModified = DateTime.Now;
-            logo.Name = System.IO.Path.GetFileNameWithoutExtension(importChannel.Item2);
             repo.Logos.Add(logo);
             channel.Logos.Add(logo);
             logo.Channels.Add(channel);
@@ -113,7 +125,7 @@ namespace ChannelManager
             }
         }
 
-        Tuple<Dictionary<string, HashSet<string>>, string, Guid> GetChannel(XmlElement channel, int type, ref List<string> errors)
+        Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo> GetChannel(XmlElement channel, int type, EF.RepositoryContext ctx, ref List<string> errors)
         {
             try
             {
@@ -121,12 +133,13 @@ namespace ChannelManager
                 if (file != null)
                 {
                     var logoFileName = file.InnerText.Trim().Replace("\t", " ");
+                    var logoUrl = (type == 0 ? tbxTVLogosBaseUrl.Text : tbxRadioLogosBaseUrl.Text) + logoFileName;
                     if (!string.IsNullOrEmpty(logoFileName))
                     {
                         byte[] logoData = null;
                         try
                         {
-                            logoData = new System.Net.WebClient().DownloadData((type == 0 ? tbxTVLogosBaseUrl.Text : tbxRadioLogosBaseUrl.Text) + logoFileName);
+                            logoData = new System.Net.WebClient().DownloadData(logoUrl);
                         }
                         catch (Exception ex)
                         {
@@ -154,6 +167,8 @@ namespace ChannelManager
                                                 providerNames.Add(provider.InnerText.Trim());
                                             foreach (XmlElement satellite in item.SelectNodes("Satellite"))
                                                 providerNames.Add(satellite.InnerText.Trim());
+                                            foreach (XmlElement satellite in item.SelectNodes("Place"))
+                                                providerNames.Add(satellite.InnerText.Trim());
 
                                             aliases[name] = providerNames;
                                         }
@@ -161,9 +176,16 @@ namespace ChannelManager
 
                                     if (aliases.Count > 0)
                                     {
-                                        Guid logoGuid = Guid.NewGuid();
-                                        File.WriteAllBytes(Path.Combine(Server.MapPath("~/Logos"), logoGuid + ".png"), logoData);
-                                        return new Tuple<Dictionary<string, HashSet<string>>, string, Guid>(aliases, logoFileName, logoGuid);
+                                        var logo = ctx.Logos.Create();
+                                        logo.Id = Guid.NewGuid();
+                                        logo.Name = System.IO.Path.GetFileNameWithoutExtension(logoFileName);
+                                        logo.Width = image.Width;
+                                        logo.Height = image.Height;
+                                        logo.SizeInBytes = logoData.Length;
+                                        logo.LastModified = DateTime.Now;
+                                        logo.Origin = logoUrl;
+                                        File.WriteAllBytes(Path.Combine(Server.MapPath("~/Logos"), logo.Id + ".png"), logoData);
+                                        return new Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo>(aliases, logoFileName, logo);
                                     }
                                     else
                                     {
