@@ -16,16 +16,12 @@
             <td>
                 <asp:TextBox ID="tbxRegion" runat="server" Width="100px"/>
                 <asp:RegularExpressionValidator runat="server" ControlToValidate="tbxRegion" ErrorMessage="Must be two upper case letters (ISO-3166 ALPHA-2)" ForeColor="Red" ValidationExpression="[A-Z][A-Z]" />
-
             </td>
         </tr>
         <tr>
             <td>Type:</td>
             <td>
-                <asp:RadioButtonList ID="rblChannelType" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="TV" Value="0" Selected="True" />
-                    <asp:ListItem Text="Radio" Value="1" />
-                </asp:RadioButtonList>
+                <asp:RadioButtonList ID="rblChannelType" runat="server" DataTextField="Key" DataValueField="Value" RepeatDirection="Horizontal" />
             </td>
         </tr>
         <tr>
@@ -52,11 +48,6 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Channel.Name" HeaderText="Channel" />
-            <asp:TemplateField HeaderText="Type">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# (byte)Eval("Channel.Type") == 0 ? "TV" : "Radio" %>'/>
-                </ItemTemplate>
-            </asp:TemplateField>
             <asp:BoundField DataField="Channel.RegionCode" HeaderText="Region" />
             <asp:TemplateField HeaderText="Logo">
                 <ItemTemplate>

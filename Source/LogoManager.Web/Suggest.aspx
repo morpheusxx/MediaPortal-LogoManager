@@ -277,10 +277,7 @@
                     <tr>
                         <td>Type</td>
                         <td>
-                            <asp:RadioButtonList ID="rblChannelType" runat="server" RepeatDirection="Horizontal">
-                                <asp:ListItem Text="TV" Value="0" Selected="True" />
-                                <asp:ListItem Text="Radio" Value="1" />
-                            </asp:RadioButtonList>
+                            <asp:RadioButtonList ID="rblChannelType" runat="server" DataTextField="Key" DataValueField="Value" RepeatDirection="Horizontal" RepeatLayout="Flow" />
                         </td>
                     </tr>
                     <tr>
@@ -312,12 +309,9 @@
                                 <td><asp:ListBox ID="listFoundChannels" runat="server" Rows="4" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="listFoundChannels_SelectedIndexChanged" /></td>
                                 <td>
                                     <asp:Panel ID="panelSelectedChannelInfo" runat="server" Visible="false">
-                                        <asp:RadioButtonList ID="rblSelectedChannelType" Enabled="false" runat="server" RepeatDirection="Horizontal">
-                                            <asp:ListItem Text="TV" Value="0" />
-                                            <asp:ListItem Text="Radio" Value="1" />
-                                        </asp:RadioButtonList>
-                                        <asp:HyperLink ID="linkSelectedChannel" runat="server" Target="_blank" /><br />
+                                        <asp:Label ID="lblSelectedChannelType" runat="server" /><br />
                                         <asp:Label ID="lblSelectedChannelRegion" runat="server" /><br />
+                                        <asp:HyperLink ID="linkSelectedChannel" runat="server" Target="_blank" /><br />
                                         <asp:Label ID="lblSelectedChannelDescription" runat="server" />
                                     </asp:Panel>
                                 </td>

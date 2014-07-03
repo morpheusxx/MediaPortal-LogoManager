@@ -11,6 +11,6 @@ namespace ChannelManager
     public interface IChannelManager
     {
         [OperationContract]
-        Dictionary<string, string> GetLogos(List<string> channelsNames, string regionCode);
+        Dictionary<string, string> GetLogos(List<string> channelsNames, ChannelType type, string regionCode);
     }
 }

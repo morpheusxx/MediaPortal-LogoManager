@@ -123,6 +123,7 @@
     <Compile Include="ChannelManager.svc.cs">
       <DependentUpon>ChannelManager.svc</DependentUpon>
     </Compile>
+    <Compile Include="ChannelType.cs" />
     <Compile Include="IChannelManager.cs" />
     <Compile Include="ObjectModel\ChannelManager-dependent.cs">
       <AutoGen>True</AutoGen>

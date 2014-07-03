@@ -139,22 +139,13 @@ namespace ChannelManager {
         protected global::System.Web.UI.WebControls.Panel panelSelectedChannelInfo;
         
         /// <summary>
-        /// rblSelectedChannelType-Steuerelement
+        /// lblSelectedChannelType-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblSelectedChannelType;
-        
-        /// <summary>
-        /// linkSelectedChannel-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkSelectedChannel;
+        protected global::System.Web.UI.WebControls.Label lblSelectedChannelType;
         
         /// <summary>
         /// lblSelectedChannelRegion-Steuerelement
@@ -164,6 +155,15 @@ namespace ChannelManager {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSelectedChannelRegion;
+        
+        /// <summary>
+        /// linkSelectedChannel-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkSelectedChannel;
         
         /// <summary>
         /// lblSelectedChannelDescription-Steuerelement

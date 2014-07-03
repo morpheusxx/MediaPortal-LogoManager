@@ -20,7 +20,7 @@ namespace ChannelManager
                     EF.Suggestion.SuggestionType suggestWhat;
                     EF.Channel channel = suggestion.GetSuggestedChannel(out suggestWhat);
                     
-                    string channelName = string.Format("{0} ({1})", channel.Name, channel.Type == 0 ? "TV" : "Radio");
+                    string channelName = string.Format("{0} ({1})", channel.Name, (ChannelType)channel.Type);
 
                     suggestions.Add(new 
                     {

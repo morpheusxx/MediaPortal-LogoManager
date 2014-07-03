@@ -14,6 +14,10 @@ namespace ChannelManager
             if (IsPostBack)
                 return;
 
+            rblChannelType.DataSource = Enum.GetNames(typeof(ChannelType)).Select((value, index) => new { value, index }).ToDictionary(pair => pair.value, pair => pair.index);
+            rblChannelType.DataBind();
+            rblChannelType.SelectedIndex = 0;
+
             using (var ctx = new EF.RepositoryContext("LogoDB"))
             {
                 var list = ctx.Channels.Select(c => c.RegionCode).Distinct().OrderBy(r => r).ToList();
@@ -25,11 +29,12 @@ namespace ChannelManager
         protected void btnShowChannels_Click(object sender, EventArgs e)
         {
             string region = ddRegion.SelectedValue;
+            byte type = byte.Parse(rblChannelType.SelectedValue);
             if (!string.IsNullOrWhiteSpace(region))
             {
                 using (var ctx = new EF.RepositoryContext("LogoDB"))
                 {
-                    var list = ctx.Channels.Include("Logos").Include("Logos.Suggestion").Include("Aliases").Include("Aliases.Providers").Where(c => c.Suggestion == null && c.RegionCode == region).OrderBy(c => c.Name).ToList();
+                    var list = ctx.Channels.Include("Logos").Include("Logos.Suggestion").Include("Aliases").Include("Aliases.Providers").Where(c => c.Suggestion == null && c.RegionCode == region && c.Type == type).OrderBy(c => c.Name).ToList();
                     gvChannels.DataSource = list;
                     gvChannels.DataBind();
                 }

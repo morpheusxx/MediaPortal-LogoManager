@@ -3,8 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
-    Region: <asp:DropDownList runat="server" ID="ddRegion" />
-    <asp:Button runat="server" ID="btnShowChannels" Text="Show Channels" OnClick="btnShowChannels_Click" />
+    <table rules="all" style="border:1px solid black;">
+        <tr>
+            <td style="padding:5px">Region: <asp:DropDownList runat="server" ID="ddRegion" /></td>
+            <td style="padding:5px">Type: <asp:RadioButtonList ID="rblChannelType" runat="server" DataTextField="Key" DataValueField="Value" RepeatDirection="Horizontal" RepeatLayout="Flow" /></td>
+            <td style="padding:5px"><asp:Button runat="server" ID="btnShowChannels" Text="Show Channels" OnClick="btnShowChannels_Click" /></td>
+        </tr>
+    </table>
     <br />
     <asp:GridView ID="gvChannels" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Vertical" OnRowDataBound="gvChannels_RowDataBound">
         <EditRowStyle BackColor="#2461BF" />
@@ -20,20 +25,13 @@
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:HyperLinkField DataNavigateUrlFields="Website" DataTextField="Name" HeaderText="Name" Target="_blank" />
-            <asp:TemplateField HeaderText="Type">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# (byte)Eval("Type") == 0 ? "TV" : "Radio" %>'/>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="RegionCode" HeaderText="Region" />
             <asp:TemplateField HeaderText="Logo">
                 <ItemTemplate>
                     <div style="float:left">
                         <asp:Image ImageUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id + ".png" %>' runat="server" Width="48px" CssClass="logothumb" />
                     </div>
                     <div style="float:right;font-size:smaller;margin-top:10px;margin-left:5px">
-                        <%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Width %>x<%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Height %><br />
-                        <%# (((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).SizeInBytes / 1024.0).ToString("F1") %> KB
+                        <%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Width %>x<%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Height %><br /><%# (((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).SizeInBytes / 1024.0).ToString("F1") %>KB
                     </div>
                 </ItemTemplate>
             </asp:TemplateField>

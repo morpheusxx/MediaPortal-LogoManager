@@ -11,7 +11,12 @@ namespace ChannelManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+                return;
 
+            rblChannelType.DataSource = Enum.GetNames(typeof(ChannelType)).Select((value, index) => new { value, index }).ToDictionary(pair => pair.value, pair => pair.index);
+            rblChannelType.DataBind();
+            rblChannelType.SelectedIndex = 0;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -45,7 +50,7 @@ namespace ChannelManager
                             throw new Exception("Please give the new Channel an unique name!");
 
                         if (ctx.Channels.Any(c => c.Name == channelName && c.Type == channelType))
-                            throw new Exception(string.Format("A {1}-Channel '{0}' already exists!", channelName, channelType == 0 ? "TV" : "Radio"));
+                            throw new Exception(string.Format("A {0}-Channel '{1}' already exists!", (ChannelType)channel.Type, channelName));
 
                         string channelWebsite = tbxChannelWebsite.Text.Trim();
                         if (!string.IsNullOrEmpty(channelWebsite) && !channelWebsite.Contains("://"))
@@ -167,7 +172,7 @@ namespace ChannelManager
                     linkSelectedChannel.NavigateUrl = channel.Website;
                     linkSelectedChannel.Text = channel.Website;
                     lblSelectedChannelDescription.Text = channel.Description;
-                    rblSelectedChannelType.SelectedValue = channel.Type.ToString();
+                    lblSelectedChannelType.Text = Enum.GetName(typeof(ChannelType), channel.Type);
                     lbSelectedChannelAliases.Items.Clear();
                     foreach(var alias in channel.Aliases)
                         lbSelectedChannelAliases.Items.Add(alias.Name);

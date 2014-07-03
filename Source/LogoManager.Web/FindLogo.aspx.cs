@@ -11,7 +11,12 @@ namespace ChannelManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+                return;
 
+            rblChannelType.DataSource = Enum.GetNames(typeof(ChannelType)).Select((value, index) => new { value, index }).ToDictionary(pair => pair.value, pair => pair.index);
+            rblChannelType.DataBind();
+            rblChannelType.SelectedIndex = 0;
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
