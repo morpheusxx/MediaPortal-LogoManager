@@ -124,6 +124,7 @@ namespace ChannelManager
                                     logo.Creator = suggestion.User;
                                     logo.Channels.Add(channel);
                                     File.WriteAllBytes(Path.Combine(Server.MapPath("~/Logos"), logo.Id + ".png"), logoData);
+                                    Thumbnailer.CreateLogoThumb(image, logo.Id);
                                 }
                             }
                         }

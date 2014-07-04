@@ -185,6 +185,7 @@ namespace ChannelManager
                                         logo.LastModified = DateTime.Now;
                                         logo.Origin = logoUrl;
                                         File.WriteAllBytes(Path.Combine(Server.MapPath("~/Logos"), logo.Id + ".png"), logoData);
+                                        Thumbnailer.CreateLogoThumb(image, logo.Id);
                                         return new Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo>(aliases, logoFileName, logo);
                                     }
                                     else

@@ -28,7 +28,9 @@
             <asp:TemplateField HeaderText="Logo">
                 <ItemTemplate>
                     <div style="float:left">
-                        <asp:Image ImageUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id + ".png" %>' runat="server" Width="48px" CssClass="logothumb" />
+                        <asp:HyperLink runat="server" Width="48px" CssClass="logothumb" Target="_blank"
+                            ImageUrl='<%# ChannelManager.Thumbnailer.GetThumbFileUrl(((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id) %>' 
+                            NavigateUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id + ".png" %>'/>
                     </div>
                     <div style="float:right;font-size:smaller;margin-top:10px;margin-left:5px">
                         <%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Width %>x<%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Height %><br /><%# (((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).SizeInBytes / 1024.0).ToString("F1") %>KB

@@ -140,6 +140,9 @@ namespace ChannelManager
                             var logoFilePath = Path.Combine(Server.MapPath("~/Logos"), l + ".png");
                             if (File.Exists(logoFilePath))
                                 File.Delete(logoFilePath);
+                            var logoThumbPath = Thumbnailer.GetThumbFilePath(l);
+                            if (File.Exists(logoThumbPath))
+                                File.Delete(logoThumbPath);
                         });
 
                         Response.Redirect("/ListSuggestions.aspx", false);

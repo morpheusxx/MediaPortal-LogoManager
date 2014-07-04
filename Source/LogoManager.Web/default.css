@@ -5,7 +5,7 @@
     font-weight: normal;
 }
 
-img.logothumb {
+a.logothumb {
   /*
   background-color: #FEFEFE;
   background-image: -webkit-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -webkit-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
