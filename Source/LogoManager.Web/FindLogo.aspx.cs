@@ -24,7 +24,7 @@ namespace ChannelManager
             IQueryable<EF.Alias> aliases = null;
             using (var ctx = new EF.RepositoryContext("LogoDB"))
             {
-                byte type = byte.Parse(rblChannelType.SelectedValue);
+                var type = (ChannelType)byte.Parse(rblChannelType.SelectedValue);
 
                 aliases = ctx.Aliases.Include("Channel").Include("Channel.Logos").Include("Channel.Logos.Suggestion").Include("Providers").Where(a => a.Name == tbxName.Text && a.Channel.Type == type);
                 if (!string.IsNullOrWhiteSpace(tbxRegion.Text) && aliases.Any())

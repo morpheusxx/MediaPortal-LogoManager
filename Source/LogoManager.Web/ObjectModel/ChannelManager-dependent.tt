@@ -148,7 +148,7 @@ void CreateClassForPersistentObject(PersistentObjectBase po)
 #>
 		<#= prop.ObjectName ? "[Key]" + GetForeignKey(po) : "" #>
 		<#= prop.Size.HasValue? "[StringLength("+prop.Size.Value +")]" :"" #>
-		public virtual <#= (prop.Type == SupportedType.BLOB ? "byte[]" : prop.Type.ToString()) #> <#= prop.Name #> { get; set; }
+		public virtual <#= GetPropertyType(prop) #> <#= prop.Name #> { get; set; }
 <#+
 		}
 		if (!keyFound && !(po is PersistentObject && (po as PersistentObject).Superclass != null))
@@ -258,5 +258,12 @@ string GetForeignKey(PersistentObjectBase po)
         }
     }
 	return "";
+}
+
+string GetPropertyType(Property prop)
+{
+	string enumtype = prop.GetExtensiblePropertyValue("EnumType") as string;
+	if (!string.IsNullOrEmpty(enumtype)) return enumtype;
+	else return (prop.Type == SupportedType.BLOB ? "byte[]" : prop.Type.ToString());
 }
 #>

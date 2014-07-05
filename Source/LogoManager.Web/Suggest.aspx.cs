@@ -44,13 +44,13 @@ namespace ChannelManager
                     if (TabContainer1.ActiveTab == tabPanelNewChannel)
                     {
                         string channelName = tbxChannelName.Text.Trim();
-                        byte channelType = byte.Parse(rblChannelType.SelectedValue);
+                        var channelType = (ChannelType)byte.Parse(rblChannelType.SelectedValue);
 
                         if (string.IsNullOrEmpty(channelName))
                             throw new Exception("Please give the new Channel an unique name!");
 
                         if (ctx.Channels.Any(c => c.Name == channelName && c.Type == channelType))
-                            throw new Exception(string.Format("A {0}-Channel '{1}' already exists!", (ChannelType)channel.Type, channelName));
+                            throw new Exception(string.Format("A {0}-Channel '{1}' already exists!", channel.Type, channelName));
 
                         string channelWebsite = tbxChannelWebsite.Text.Trim();
                         if (!string.IsNullOrEmpty(channelWebsite) && !channelWebsite.Contains("://"))

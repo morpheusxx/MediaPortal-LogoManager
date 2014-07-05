@@ -24,7 +24,7 @@ namespace ChannelManager
 
                         lblSuggestionDate.Text = suggestion.Created.ToString("dd.MM.yyyy hh:mm");
                         lblSuggestWhat.Text = string.Format("Suggestion for a new {0}", suggestWhat);
-                        lblChannelName.Text = string.Format("{0} ({1})", channel.Name, (ChannelType)channel.Type);
+                        lblChannelName.Text = string.Format("{0} ({1})", channel.Name, channel.Type);
                         linkChannel.NavigateUrl = channel.Website;
                         linkChannel.Text = channel.Website;
                         linkChannel.Visible = !string.IsNullOrEmpty(channel.Website);

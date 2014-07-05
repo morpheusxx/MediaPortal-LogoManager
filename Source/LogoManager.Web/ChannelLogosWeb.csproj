@@ -233,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logos\" />
+    <Folder Include="LogoThumbs\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

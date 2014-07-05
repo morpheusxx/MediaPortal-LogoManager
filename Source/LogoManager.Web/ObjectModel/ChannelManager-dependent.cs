@@ -203,7 +203,7 @@ namespace ChannelManager.EF
 		public virtual String RegionCode { get; set; }
 		
 		
-		public virtual Byte Type { get; set; }
+		public virtual ChannelType Type { get; set; }
 		
 		
 		public virtual String Description { get; set; }

@@ -66,11 +66,11 @@ namespace ChannelManager
 
                     foreach (var importChannel in xmlTvChannels)
                     {
-                        CreateDbChannel(importChannel, 0, ctx, repo, currentUser, allProviders);
+                        CreateDbChannel(importChannel, ChannelType.Tv, ctx, repo, currentUser, allProviders);
                     }
                     foreach (var importChannel in xmlRadioChannels)
                     {
-                        CreateDbChannel(importChannel, 1, ctx, repo, currentUser, allProviders);
+                        CreateDbChannel(importChannel, ChannelType.Radio, ctx, repo, currentUser, allProviders);
                     }
 
                     ctx.ChangeTracker.DetectChanges();
@@ -86,7 +86,7 @@ namespace ChannelManager
             listErrors.Visible = errors.Count > 0;
         }
 
-        void CreateDbChannel(Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo> importChannel, byte channelType, EF.RepositoryContext ctx, EF.Repository repo, EF.User user, Dictionary<string, EF.Provider> knownProviders)
+        void CreateDbChannel(Tuple<Dictionary<string, HashSet<string>>, string, EF.Logo> importChannel, ChannelType channelType, EF.RepositoryContext ctx, EF.Repository repo, EF.User user, Dictionary<string, EF.Provider> knownProviders)
         {
             var channel = ctx.Channels.Create();
             channel.Id = Guid.NewGuid();

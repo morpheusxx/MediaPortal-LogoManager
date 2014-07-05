@@ -19,7 +19,12 @@
     <StereoType>
       <StereoTypeName>Property</StereoTypeName>
       <BaseModelElementTypeFullName>tasl.Dsl.Property</BaseModelElementTypeFullName>
-      <DefinedProperties />
+      <DefinedProperties>
+        <ExtensibleProperty>
+          <PropertyName>EnumType</PropertyName>
+          <PropertyTypeFullName>System.String</PropertyTypeFullName>
+        </ExtensibleProperty>
+      </DefinedProperties>
     </StereoType>
     <StereoType>
       <StereoTypeName>Method</StereoTypeName>
@@ -134,7 +139,12 @@
           <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
         </Property>
         <Property Id="bf4ed0fe-c45a-4e0f-9a3e-b1a87e5a975d" Name="Type" type="Byte" defaultValue="" nameAndType="Type : Byte" objectName="false" size="" cachedBLOB="false">
-          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <ExtensiblePropertyInstance>
+              <Name>EnumType</Name>
+              <ValueAsString>ChannelType</ValueAsString>
+            </ExtensiblePropertyInstance>
+          </ArrayOfExtensiblePropertyInstance>
         </Property>
         <Property Id="abccf5a9-a5e9-4cf2-b46c-c90262359156" Name="Description" type="String" defaultValue="" nameAndType="Description : String" objectName="false" size="" cachedBLOB="false">
           <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />

@@ -16,7 +16,7 @@ namespace ChannelManager
             {
                 foreach (var channelName in channelsNames)
                 {
-                    var aliases = ctx.Aliases.Include("Channel").Include("Channel.Logos").Include("Channel.Logos.Suggestion").Where(a => a.Name == channelName && a.Channel.Type == (byte)type);
+                    var aliases = ctx.Aliases.Include("Channel").Include("Channel.Logos").Include("Channel.Logos.Suggestion").Where(a => a.Name == channelName && a.Channel.Type == type);
                     if (aliases.Any())
                     {
                         if (!string.IsNullOrWhiteSpace(regionCode))

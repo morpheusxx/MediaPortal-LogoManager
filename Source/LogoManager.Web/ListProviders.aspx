@@ -12,7 +12,7 @@
             <asp:BoundField DataField="Name" HeaderText="Alias" />
             <asp:TemplateField HeaderText="Type">
                 <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# ((ChannelManager.ChannelType)Eval("Channel.Type")).ToString() %>'/>
+                    <asp:Label runat="server" Text='<%# Eval("Channel.Type") %>'/>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

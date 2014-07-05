@@ -29,7 +29,7 @@ namespace ChannelManager
         protected void btnShowChannels_Click(object sender, EventArgs e)
         {
             string region = ddRegion.SelectedValue;
-            byte type = byte.Parse(rblChannelType.SelectedValue);
+            var type = (ChannelType)byte.Parse(rblChannelType.SelectedValue);
             if (!string.IsNullOrWhiteSpace(region))
             {
                 using (var ctx = new EF.RepositoryContext("LogoDB"))
