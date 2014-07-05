@@ -38,12 +38,12 @@ namespace ChannelManager
 
         public static string GetThumbFilePath(Guid logoId)
         {
-            return Path.Combine(HttpContext.Current.Server.MapPath("~/Logos"), string.Format("{0}_{1}.png", logoId, Thumbnailer.ThumbSize));
+            return Path.Combine(HttpContext.Current.Server.MapPath("~/LogoThumbs"), string.Format("{0}_{1}.png", logoId, Thumbnailer.ThumbSize));
         }
 
         public static string GetThumbFileUrl(Guid logoId)
         {
-            return string.Format("/Logos/{0}_{1}.png", logoId, Thumbnailer.ThumbSize);
+            return string.Format("/LogoThumbs/{0}_{1}.png", logoId, Thumbnailer.ThumbSize);
         }
     }
 }

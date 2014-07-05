@@ -52,3 +52,4 @@ Desktop.ini
 $RECYCLE.BIN/
 /Source/LogoManager.Web/Properties/PublishProfiles
 /Source/LogoManager.Web/Logos/*.png
+/Source/LogoManager.Web/LogoThumbs/*.png
