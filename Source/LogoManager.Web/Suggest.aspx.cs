@@ -133,7 +133,10 @@ namespace ChannelManager
                     ctx.ChangeTracker.DetectChanges();
 
                     if (channel.Logos.Count == 0)
-                        throw new Exception("Please specify a logo for the new Channel");
+                        throw new Exception("Please specify a logo for the new Channel!");
+
+                    if (!suggestion.Channels.Any() && !suggestion.Aliases.Any() && !suggestion.Logos.Any())
+                        throw new Exception("Please suggest at least a new logo or new alias!");
                     
                     ctx.SaveChanges();
 

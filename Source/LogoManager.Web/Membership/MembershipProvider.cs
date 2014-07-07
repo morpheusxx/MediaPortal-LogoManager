@@ -61,6 +61,10 @@ namespace ChannelManager
                 else
                 {
                     var user = new User() { Id = Guid.NewGuid(), Login = username, Email = email, Password = GetMD5Hash(password), Repository = ctx.Repositorys.First() };
+                    if (ctx.Users.Count() == 0)
+                    {
+                        user.Roles.Add(ctx.Roles.First(r => r.Name == "Administrator"));
+                    }
                     ctx.Users.Add(user);
                     ctx.SaveChanges();
                     status = MembershipCreateStatus.Success;

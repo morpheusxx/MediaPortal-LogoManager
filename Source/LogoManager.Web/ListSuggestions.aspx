@@ -25,12 +25,20 @@
             <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="SuggestionDetail.aspx?id={0}" DataTextField="Type" HeaderText="Type" />
             <asp:BoundField DataField="Channel" HeaderText="Channel" />
             <asp:BoundField DataField="Region" HeaderText="Region" />
-            <asp:TemplateField HeaderText="Logo">
+            <asp:TemplateField HeaderText="New Logo">
                 <ItemTemplate>
-                    <asp:Image ImageUrl='<%# "/Logos/" + Eval("Logo") + ".png" %>' runat="server" Width="48px" Visible='<%# Eval("Logo") != null %>'/>
+                    <div style="float:left">
+                        <asp:HyperLink runat="server" Width="48px" CssClass="logothumb" Target="_blank" Visible='<%# Eval("Logo") != null %>'
+                            ImageUrl='<%# ChannelManager.Thumbnailer.GetThumbFileUrl(Eval("Logo.Id") as Guid?) %>' 
+                            NavigateUrl='<%# "/Logos/" + Eval("Logo.Id") + ".png" %>'/>
+                    </div>
+                    <asp:Panel runat="server" Visible='<%# Eval("Logo") != null %>' CssClass="logoMetadata">
+                        <asp:Label runat="server" Text='<%# string.Format("{0}x{1}", Eval("Logo.Width"), Eval("Logo.Height")) %>' /><br />
+                        <asp:Label runat="server" Text='<%# string.Format("{0:F1}KB", (int)(Eval("Logo.SizeInBytes") ?? 0) / 1024.0) %>' />
+                    </asp:Panel>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Aliases" HeaderText="Aliases" />
+            <asp:BoundField DataField="Aliases" HeaderText="New Aliases" />
             <asp:BoundField DataField="Description" HeaderText="Description" />
         </Columns>
     </asp:GridView>

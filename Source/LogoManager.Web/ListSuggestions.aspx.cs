@@ -15,7 +15,7 @@ namespace ChannelManager
             {
                 List<object> suggestions = new List<object>();
 
-                foreach (var suggestion in ctx.Suggestions.Include("Channels").Include("Aliases").Include("Aliases.Channel").Include("Logos").Include("Logos.Channels").Include("User").OrderBy(s => s.LastModified))
+                foreach (var suggestion in ctx.Suggestions.Include("Channels").Include("Aliases").Include("Aliases.Channel").Include("Logos").Include("Logos.Channels").Include("User").OrderByDescending(s => s.LastModified))
                 {
                     EF.Suggestion.SuggestionType suggestWhat;
                     EF.Channel channel = suggestion.GetSuggestedChannel(out suggestWhat);
@@ -32,7 +32,7 @@ namespace ChannelManager
                         Region = channel.RegionCode,
                         Aliases = string.Join(", ", suggestion.Aliases.Select(a => a.Name)),
                         Description = channel.Description,
-                        Logo = suggestion.Logos.Any() ? suggestion.Logos.First().Id.ToString() : null
+                        Logo = suggestion.Logos.FirstOrDefault()
                     });
                 }
 

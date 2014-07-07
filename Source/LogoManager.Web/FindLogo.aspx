@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChannelManager.Master" AutoEventWireup="true" CodeBehind="FindLogo.aspx.cs" Inherits="ChannelManager.FindLogo" %>
+﻿<%@ Page Title="Find Logo" Language="C#" MasterPageFile="~/ChannelManager.Master" AutoEventWireup="true" CodeBehind="FindLogo.aspx.cs" Inherits="ChannelManager.FindLogo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -56,7 +56,7 @@
                             ImageUrl='<%# ChannelManager.Thumbnailer.GetThumbFileUrl(((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Id) %>' 
                             NavigateUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Id + ".png" %>'/>
                     </div>
-                    <div style="float:right;font-size:smaller;margin-top:10px;margin-left:5px">
+                    <div class="logoMetadata">
                         <%# ((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Width %>x<%# ((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Height %><br /><%# (((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).SizeInBytes / 1024.0).ToString("F1") %>KB
                     </div>
                 </ItemTemplate>

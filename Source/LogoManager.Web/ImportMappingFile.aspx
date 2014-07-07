@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChannelManager.Master" AutoEventWireup="true" CodeBehind="ImportMappingFile.aspx.cs" Inherits="ChannelManager.ImportMappingFile" %>
+﻿<%@ Page Title="Import Mapping XML" Language="C#" MasterPageFile="~/ChannelManager.Master" AutoEventWireup="true" CodeBehind="ImportMappingFile.aspx.cs" Inherits="ChannelManager.ImportMappingFile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

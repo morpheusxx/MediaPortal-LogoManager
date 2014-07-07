@@ -33,6 +33,18 @@ namespace ChannelManager.Migrations
                 repo = context.Repositorys.Create();
                 repo.Id = Guid.NewGuid();
                 context.Repositorys.Add(repo);
+
+                var role = context.Roles.Create();
+                role.Id = Guid.NewGuid();
+                role.Name = "Administrator";
+                repo.Roles.Add(role);
+
+                role = context.Roles.Create();
+                role.Id = Guid.NewGuid();
+                role.Name = "Maintainer";
+                repo.Roles.Add(role);
+
+                context.SaveChanges();
             }
         }
     }

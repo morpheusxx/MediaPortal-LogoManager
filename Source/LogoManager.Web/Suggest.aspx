@@ -15,9 +15,9 @@
                             <asp:TextBox ID="tbxChannelName" runat="server" Width="100%"></asp:TextBox></td>
                     </tr>
                     <tr>
-                        <td>Website</td>
+                        <td>Website&nbsp;<asp:Image runat="server" ImageUrl="~/Images/help.png" ToolTip="Uri of the Channel Homepage (when available)" /></td>
                         <td>
-                            <asp:TextBox ID="tbxChannelWebsite" runat="server" Width="100%" ToolTip="Uri of the Homepage when available"></asp:TextBox></td>
+                            <asp:TextBox ID="tbxChannelWebsite" runat="server" Width="100%"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <td>Region</td>
@@ -289,7 +289,7 @@
                 </table>
             </ContentTemplate>
         </ajaxToolkit:TabPanel>
-        <ajaxToolkit:TabPanel ID="tabPanelExistingChannel" runat="server" HeaderText="Find existing Channel">
+        <ajaxToolkit:TabPanel ID="tabPanelExistingChannel" runat="server" HeaderText="Suggest new Logo/Alias for existing Channel">
             <ContentTemplate>
                 <asp:UpdatePanel ID="UpdatePanelChannelSearch" runat="server">
                     <ContentTemplate>

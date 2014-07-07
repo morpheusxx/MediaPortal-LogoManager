@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChannelManager.Master" AutoEventWireup="true" CodeBehind="SuggestionDetail.aspx.cs" Inherits="ChannelManager.SuggestionDetail" %>
+﻿<%@ Page Title="Suggestion Detail" Language="C#" MasterPageFile="~/ChannelManager.Master" AutoEventWireup="true" CodeBehind="SuggestionDetail.aspx.cs" Inherits="ChannelManager.SuggestionDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -6,11 +6,12 @@
         th, td { padding: 5px; }
     </style>
     <h3><asp:Label runat="server" ID="lblSuggestWhat" /></h3>
-    <table rules="all" style="border-style:ridge">
+    <table rules="all" style="border-style:ridge;max-width:600px">
         <tr>
             <td>Created</td>
             <td><asp:Label ID="lblSuggestionDate" runat="server" Text="Label"/></td>
-            <td rowspan="6"><asp:Image ID="imgChannelLogo" runat="server" Height="160" BorderStyle="Dashed" /></td>
+            <td rowspan="6"><asp:HyperLink ID="imgChannelLogo" runat="server" Target="_blank" CssClass="logoBig" /><br />
+                <asp:Label runat="server" ID="lblLogoMetadata"/></td>
         </tr>
         <tr>
             <td>Channel</td>

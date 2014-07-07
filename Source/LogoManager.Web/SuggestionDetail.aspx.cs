@@ -30,7 +30,11 @@ namespace ChannelManager
                         linkChannel.Visible = !string.IsNullOrEmpty(channel.Website);
                         lblChannelRegion.Text = channel.RegionCode;
                         lblChannelDescription.Text = channel.Description;
-                        imgChannelLogo.ImageUrl = string.Format("/Logos/{0}.png", suggestion.Logos.Any() ? suggestion.Logos.First().Id.ToString() : channel.Logos.First().Id.ToString());
+
+                        var logo = suggestion.Logos.Any() ? suggestion.Logos.First() : channel.Logos.First();
+                        imgChannelLogo.ImageUrl = string.Format("/Logos/{0}.png", logo.Id);
+                        imgChannelLogo.NavigateUrl = string.Format("/Logos/{0}.png", logo.Id);
+                        lblLogoMetadata.Text = string.Format("{0}x{1}, {2:F1}KB", logo.Width, logo.Height, logo.SizeInBytes / 1024.0);
 
                         string oldAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == null).Select(a => a.Name));
                         string newAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == suggestion).Select(a => a.Name));
@@ -93,6 +97,10 @@ namespace ChannelManager
                     if (suggestion != null)
                     {
                         foreach (var channel in suggestion.Channels) channel.Suggestion = null;
+                        if (suggestion.Logos.Any())
+                        {
+                            // todo : delete the old logo on the channel when suggestion was new logo
+                        }
                         foreach (var logo in suggestion.Logos) logo.Suggestion = null;
                         foreach (var alias in suggestion.Aliases) alias.Suggestion = null;
                         ctx.Messages.RemoveRange(suggestion.Messages);
@@ -162,8 +170,10 @@ namespace ChannelManager
                     .Include("Channels")
                     .Include("Messages")
                     .Include("Aliases")
+                    .Include("Aliases.Channel")
+                    .Include("Aliases.Channel.Logos")
+                    .Include("Aliases.Channel.Aliases")
                     .Include("Logos").Include("Logos.Channels")
-                    .Include("Aliases.Channel").Include("Aliases.Channel.Logos")
                     .FirstOrDefault(s => s.Id == suggestionId);
             }
             return null;

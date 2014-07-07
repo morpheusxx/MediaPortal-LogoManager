@@ -37,7 +37,16 @@ namespace ChannelManager {
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgChannelLogo;
+        protected global::System.Web.UI.WebControls.HyperLink imgChannelLogo;
+        
+        /// <summary>
+        /// lblLogoMetadata-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLogoMetadata;
         
         /// <summary>
         /// lblChannelName-Steuerelement

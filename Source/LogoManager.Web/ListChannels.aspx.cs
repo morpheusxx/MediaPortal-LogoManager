@@ -20,7 +20,7 @@ namespace ChannelManager
 
             using (var ctx = new EF.RepositoryContext("LogoDB"))
             {
-                var list = ctx.Channels.Select(c => c.RegionCode).Distinct().OrderBy(r => r).ToList();
+                var list = ctx.Channels.Where(c => c.Suggestion == null).Select(c => c.RegionCode).Distinct().OrderBy(r => r).ToList();
                 ddRegion.DataSource = list;
                 ddRegion.DataBind();
             }

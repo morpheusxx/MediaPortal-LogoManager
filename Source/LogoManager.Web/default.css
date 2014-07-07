@@ -6,19 +6,30 @@
 }
 
 a.logothumb {
-  /*
-  background-color: #FEFEFE;
-  background-image: -webkit-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -webkit-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
-  background-image: -moz-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -moz-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
-  background-image: -o-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -o-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
-  background-image: -ms-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -ms-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
-  background-image: linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
-  -webkit-background-size:10px 10px;
-  -moz-background-size:10px 10px;
-  background-size:10px 10px;
-  background-position:0 0, 5px 5px;
-  */
   border: 1px solid silver;
+}
+
+a.logoBig img {
+    max-height: 160px;
+    border: 2px dashed black;
+
+    background-color: #FEFEFE;
+    background-image: -webkit-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -webkit-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
+    background-image: -moz-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -moz-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
+    background-image: -o-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -o-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
+    background-image: -ms-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), -ms-linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
+    background-image: linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB), linear-gradient(45deg, #DBDBDB 25%, transparent 25%, transparent 75%, #DBDBDB 75%, #DBDBDB);
+    -webkit-background-size:10px 10px;
+    -moz-background-size:10px 10px;
+    background-size:10px 10px;
+    background-position:0 0, 5px 5px;
+}
+
+div.logoMetadata {
+    float:right;
+    font-size:smaller;
+    margin-top:10px;
+    margin-left:5px
 }
 
 span.provider {
