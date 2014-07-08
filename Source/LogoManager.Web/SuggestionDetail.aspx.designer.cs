@@ -31,22 +31,49 @@ namespace ChannelManager {
         protected global::System.Web.UI.WebControls.Label lblSuggestionDate;
         
         /// <summary>
-        /// imgChannelLogo-Steuerelement
+        /// lblNewLogo-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink imgChannelLogo;
+        protected global::System.Web.UI.WebControls.Label lblNewLogo;
         
         /// <summary>
-        /// lblLogoMetadata-Steuerelement
+        /// imgChannelLogoNew-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLogoMetadata;
+        protected global::System.Web.UI.WebControls.HyperLink imgChannelLogoNew;
+        
+        /// <summary>
+        /// lblLogoMetadataNew-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLogoMetadataNew;
+        
+        /// <summary>
+        /// imgChannelLogoOld-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink imgChannelLogoOld;
+        
+        /// <summary>
+        /// lblLogoMetadataOld-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLogoMetadataOld;
         
         /// <summary>
         /// lblChannelName-Steuerelement

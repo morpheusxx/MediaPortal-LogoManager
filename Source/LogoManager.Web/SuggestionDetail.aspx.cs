@@ -31,10 +31,26 @@ namespace ChannelManager
                         lblChannelRegion.Text = channel.RegionCode;
                         lblChannelDescription.Text = channel.Description;
 
-                        var logo = suggestion.Logos.Any() ? suggestion.Logos.First() : channel.Logos.First();
-                        imgChannelLogo.ImageUrl = string.Format("/Logos/{0}.png", logo.Id);
-                        imgChannelLogo.NavigateUrl = string.Format("/Logos/{0}.png", logo.Id);
-                        lblLogoMetadata.Text = string.Format("{0}x{1}, {2:F1}KB", logo.Width, logo.Height, logo.SizeInBytes / 1024.0);
+                        var logoNew = suggestion.Logos.FirstOrDefault();
+                        if (logoNew != null)
+                        {
+                            imgChannelLogoNew.Visible = true;
+                            imgChannelLogoNew.ImageUrl = string.Format("/Logos/{0}.png", logoNew.Id);
+                            imgChannelLogoNew.NavigateUrl = string.Format("/Logos/{0}.png", logoNew.Id);
+                            lblLogoMetadataNew.Text = string.Format("{0}x{1}, {2:F1}KB", logoNew.Width, logoNew.Height, logoNew.SizeInBytes / 1024.0);
+                            lblLogoMetadataNew.Visible = true;
+                            lblNewLogo.Visible = true;
+                        }
+                        
+                        var logoOld = channel.Logos.FirstOrDefault(l => l.Suggestion == null);
+                        if (logoOld != null)
+                        {
+                            imgChannelLogoOld.Visible = true;
+                            imgChannelLogoOld.ImageUrl = string.Format("/Logos/{0}.png", logoOld.Id);
+                            imgChannelLogoOld.NavigateUrl = string.Format("/Logos/{0}.png", logoOld.Id);
+                            lblLogoMetadataOld.Text = string.Format("{0}x{1}, {2:F1}KB", logoOld.Width, logoOld.Height, logoOld.SizeInBytes / 1024.0);
+                            lblLogoMetadataOld.Visible = true;
+                        }
 
                         string oldAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == null).Select(a => a.Name));
                         string newAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == suggestion).Select(a => a.Name));
@@ -92,14 +108,22 @@ namespace ChannelManager
                         .Include("Channels")
                         .Include("Messages")
                         .Include("Aliases")
-                        .Include("Logos")
+                        .Include("Logos").Include("Logos.Channels").Include("Logos.Channels.Logos")
                         .FirstOrDefault(s => s.Id == suggestionId);
                     if (suggestion != null)
                     {
                         foreach (var channel in suggestion.Channels) channel.Suggestion = null;
                         if (suggestion.Logos.Any())
                         {
-                            // todo : delete the old logo on the channel when suggestion was new logo
+                            // delete the old logo (DB object and files) on the channel when suggestion was new logo
+                            foreach(var logo in suggestion.Logos.First().Channels.First().Logos.Where(l => l.Suggestion == null).ToList())
+                            {
+                                logo.Repository = null;
+                                logo.Creator = null;
+                                ctx.Logos.Remove(logo);
+                                File.Delete(Thumbnailer.GetThumbFilePath(logo.Id));
+                                File.Delete(Path.Combine(Server.MapPath("~/Logos"), logo.Id + ".png"));
+                            }
                         }
                         foreach (var logo in suggestion.Logos) logo.Suggestion = null;
                         foreach (var alias in suggestion.Aliases) alias.Suggestion = null;
@@ -173,7 +197,7 @@ namespace ChannelManager
                     .Include("Aliases.Channel")
                     .Include("Aliases.Channel.Logos")
                     .Include("Aliases.Channel.Aliases")
-                    .Include("Logos").Include("Logos.Channels")
+                    .Include("Logos").Include("Logos.Channels").Include("Logos.Channels.Logos")
                     .FirstOrDefault(s => s.Id == suggestionId);
             }
             return null;

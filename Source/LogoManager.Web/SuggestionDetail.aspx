@@ -10,8 +10,15 @@
         <tr>
             <td>Created</td>
             <td><asp:Label ID="lblSuggestionDate" runat="server" Text="Label"/></td>
-            <td rowspan="6"><asp:HyperLink ID="imgChannelLogo" runat="server" Target="_blank" CssClass="logoBig" /><br />
-                <asp:Label runat="server" ID="lblLogoMetadata"/></td>
+            <td rowspan="6">
+                <asp:Label runat="server" ID="lblNewLogo" Visible="false" Text="New Logo:"/><br />
+                <asp:HyperLink ID="imgChannelLogoNew" runat="server" Target="_blank" CssClass="logoBig" Visible="false" /><br />
+                <asp:Label runat="server" ID="lblLogoMetadataNew" Visible="false"/>
+            </td>
+            <td rowspan="6">
+                <asp:HyperLink ID="imgChannelLogoOld" runat="server" Target="_blank" CssClass="logoBig" Visible="false" /><br />
+                <asp:Label runat="server" ID="lblLogoMetadataOld" Visible="false"/>
+            </td>
         </tr>
         <tr>
             <td>Channel</td>
@@ -35,10 +42,10 @@
         </tr>
         <tr>
             <td>Description</td>
-            <td colspan="2"><asp:Label ID="lblChannelDescription" runat="server" /></td>
+            <td colspan="3"><asp:Label ID="lblChannelDescription" runat="server" /></td>
         </tr>
         <tr>
-            <td colspan="3" style="text-align:right">
+            <td colspan="4" style="text-align:right">
                 <asp:Button ID="btnApprove" runat="server" Text="Approve" OnClick="btnApprove_Click" />
                 <asp:Button ID="btnDecline" runat="server" Text="Decline" OnClick="btnDecline_Click" />
             </td>
