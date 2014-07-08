@@ -22,11 +22,12 @@
     <MetadataSource Address="http://channellogos.nocrosshair.de/ChannelManager.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ChannelManager.disco" MetadataType="Disco" ID="eb8f9793-ddf9-417c-8b85-32f25245e15f" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?disco" />
-    <MetadataFile FileName="ChannelManager.xsd" MetadataType="Schema" ID="8060cfd2-e15d-464c-8e27-29a5264c6c06" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd0" />
     <MetadataFile FileName="ChannelManager.wsdl" MetadataType="Wsdl" ID="cf92e194-d3fc-48d7-bec3-44e300df88cf" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?wsdl" />
-    <MetadataFile FileName="ChannelManager1.xsd" MetadataType="Schema" ID="6571990a-c20c-4779-ac2a-f211368d6752" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd2" />
+    <MetadataFile FileName="ChannelManager.disco" MetadataType="Disco" ID="eb8f9793-ddf9-417c-8b85-32f25245e15f" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?disco" />
     <MetadataFile FileName="ChannelManager2.xsd" MetadataType="Schema" ID="51d388c0-5ef4-4201-93bd-d61cfaa1a7c2" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd1" />
+    <MetadataFile FileName="ChannelManager.xsd" MetadataType="Schema" ID="8060cfd2-e15d-464c-8e27-29a5264c6c06" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd0" />
+    <MetadataFile FileName="ChannelManager3.xsd" MetadataType="Schema" ID="a3d21877-2ead-41ac-8c00-0f56372cc098" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd3" />
+    <MetadataFile FileName="ChannelManager1.xsd" MetadataType="Schema" ID="6571990a-c20c-4779-ac2a-f211368d6752" SourceId="1" SourceUrl="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

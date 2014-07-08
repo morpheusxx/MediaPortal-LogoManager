@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://channellogos.nocrosshair.de/ChannelManager.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ChannelManager" />
   <xs:element name="GetLogos">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="channelsNames" nillable="true" type="q1:ArrayOfstring" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ChannelManager" minOccurs="0" name="type" type="q2:ChannelType" />
         <xs:element minOccurs="0" name="regionCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -12,7 +14,7 @@
   <xs:element name="GetLogosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLogosResult" nillable="true" type="q2:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLogosResult" nillable="true" type="q3:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -23,27 +23,27 @@ namespace MediaPortal.LogoManager
 
     public string RepositoryUrl { get; set; }
 
-    public Stream Download(string channelName, string regionCode = NO_REGION)
+    public Stream Download(string channelName, ChannelType channelType = ChannelType.Tv, string regionCode = NO_REGION)
     {
-      var res = Download(new[] { channelName }, regionCode);
+      var res = Download(new[] { channelName }, channelType, regionCode);
       return res.ContainsKey(channelName) ? res.Values.First().Result : null;
     }
 
-    public Dictionary<string, Task<Stream>> Download(string[] channelName, string regionCode = NO_REGION)
+    public Dictionary<string, Task<Stream>> Download(string[] channelName, ChannelType channelType = ChannelType.Tv, string regionCode = NO_REGION)
     {
-      var logoUrls = Lookup(channelName, regionCode);
+      var logoUrls = Lookup(channelName, channelType, regionCode);
       return logoUrls.Result.ToDictionary(logoNameUrl => logoNameUrl.Key, logoNameUrl => DownloadLogoAsync(logoNameUrl.Value));
     }
 
-    public Task<Dictionary<string, string>> Lookup(string channelName, string regionCode = NO_REGION)
+    public Task<Dictionary<string, string>> Lookup(string channelName, ChannelType channelType = ChannelType.Tv, string regionCode = NO_REGION)
     {
-      return Lookup(new[] { channelName }, regionCode);
+      return Lookup(new[] { channelName }, channelType, regionCode);
     }
 
-    public async Task<Dictionary<string, string>> Lookup(string[] channelNames, string regionCode = NO_REGION)
+    public async Task<Dictionary<string, string>> Lookup(string[] channelNames, ChannelType channelType = ChannelType.Tv, string regionCode = NO_REGION)
     {
       ChannelManagerClient client = new ChannelManagerClient(new BasicHttpBinding(), new EndpointAddress(string.Format("{0}ChannelManager.svc", RepositoryUrl)));
-      return await client.GetLogosAsync(channelNames, regionCode);
+      return await client.GetLogosAsync(channelNames, channelType, regionCode);
     }
 
     private async Task<Stream> DownloadLogoAsync(string logoId)

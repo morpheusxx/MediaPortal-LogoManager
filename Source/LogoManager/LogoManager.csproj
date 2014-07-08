@@ -87,6 +87,9 @@
     <None Include="Service References\ChannelManagerService\ChannelManager.disco" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ChannelManagerService\ChannelManager3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ChannelManagerService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
