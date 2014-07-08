@@ -16,6 +16,7 @@
                 <asp:Label runat="server" ID="lblLogoMetadataNew" Visible="false"/>
             </td>
             <td rowspan="6">
+                <asp:Label runat="server" ID="lblOldLogo" Visible="false" Text="Old Logo:"/><br />
                 <asp:HyperLink ID="imgChannelLogoOld" runat="server" Target="_blank" CssClass="logoBig" Visible="false" /><br />
                 <asp:Label runat="server" ID="lblLogoMetadataOld" Visible="false"/>
             </td>

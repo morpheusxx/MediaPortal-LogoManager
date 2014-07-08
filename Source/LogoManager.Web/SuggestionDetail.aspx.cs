@@ -50,6 +50,7 @@ namespace ChannelManager
                             imgChannelLogoOld.NavigateUrl = string.Format("/Logos/{0}.png", logoOld.Id);
                             lblLogoMetadataOld.Text = string.Format("{0}x{1}, {2:F1}KB", logoOld.Width, logoOld.Height, logoOld.SizeInBytes / 1024.0);
                             lblLogoMetadataOld.Visible = true;
+                            if (logoNew != null) lblOldLogo.Visible = true;
                         }
 
                         string oldAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == null).Select(a => a.Name));
