@@ -167,11 +167,14 @@ namespace ChannelManager
                                                 providerNames = new HashSet<string>();
 
                                             foreach (XmlElement provider in item.SelectNodes("Provider"))
-                                                providerNames.Add(provider.InnerText.Trim());
+                                                if (!string.IsNullOrWhiteSpace(provider.InnerText)) 
+                                                    providerNames.Add(provider.InnerText.Trim());
                                             foreach (XmlElement satellite in item.SelectNodes("Satellite"))
-                                                providerNames.Add(satellite.InnerText.Trim());
-                                            foreach (XmlElement satellite in item.SelectNodes("Place"))
-                                                providerNames.Add(satellite.InnerText.Trim());
+                                                if (!string.IsNullOrWhiteSpace(satellite.InnerText)) 
+                                                    providerNames.Add(satellite.InnerText.Trim());
+                                            foreach (XmlElement place in item.SelectNodes("Place"))
+                                                if (!string.IsNullOrWhiteSpace(place.InnerText)) 
+                                                    providerNames.Add(place.InnerText.Trim());
 
                                             aliases[name] = providerNames;
                                         }
