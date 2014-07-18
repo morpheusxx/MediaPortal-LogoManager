@@ -19,6 +19,7 @@ namespace ChannelManager
         protected void btnImport_Click(object sender, EventArgs e)
         {
             var errors = new List<string>();
+            txtInfo.Text = "";
 
             try
             {
@@ -76,6 +77,8 @@ namespace ChannelManager
                     ctx.ChangeTracker.DetectChanges();
                     ctx.SaveChanges();
                 }
+
+                txtInfo.Text = string.Format("Imported {0} TV and {1} Radio Channels.", xmlTvChannels.Count, xmlRadioChannels.Count);
             }
             catch (Exception ex)
             {

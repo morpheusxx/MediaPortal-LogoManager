@@ -288,7 +288,7 @@
             </td>
         </tr>
     </table>
-
+    <p><asp:Label runat="server" ID="txtInfo"/></p>
     <asp:Repeater runat="server" ID="listErrors" Visible="false">
         <HeaderTemplate><ul></HeaderTemplate>
         <ItemTemplate><li><%# Container.DataItem %></li></ItemTemplate>
