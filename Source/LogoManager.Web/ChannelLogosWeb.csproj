@@ -208,16 +208,16 @@
     <Compile Include="Thumbnailer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ObjectModel\ChannelManager.tasl" />
-    <Content Include="ObjectModel\ChannelManager.tasl.diagram">
+    <None Include="ObjectModel\ChannelManager.tasl" />
+    <None Include="ObjectModel\ChannelManager.tasl.diagram">
       <DependentUpon>ChannelManager.tasl</DependentUpon>
-    </Content>
+    </None>
     <Content Include="ObjectModel\ChannelManager-dependent.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ChannelManager-dependent.cs</LastGenOutput>
       <DependentUpon>ChannelManager.tasl</DependentUpon>
     </Content>
-    <Content Include="packages.config" />
+    <None Include="packages.config" />
     <Content Include="ChannelManager.Master" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Web.Debug.config">

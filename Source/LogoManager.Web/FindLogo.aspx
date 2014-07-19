@@ -47,8 +47,16 @@
                     <asp:Label runat="server" Text='<%# string.Join(", ", ((IList<ChannelManager.EF.Provider>)Eval("Providers")).Select(a => a.Name)) %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Channel.Name" HeaderText="Channel" />
-            <asp:BoundField DataField="Channel.RegionCode" HeaderText="Region" />
+            <asp:TemplateField HeaderText="Channel">
+                <ItemTemplate>
+                    <%# Eval("Channel.Name") %>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Region">
+                <ItemTemplate>
+                    <%# Eval("Channel.RegionCode") %>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Logo">
                 <ItemTemplate>
                     <div style="float:left">
@@ -61,7 +69,11 @@
                     </div>
                 </ItemTemplate>
             </asp:TemplateField>            
-            <asp:BoundField DataField="Channel.Description" HeaderText="Description" />
+            <asp:TemplateField HeaderText="Description">
+                <ItemTemplate>
+                    <%# Eval("Channel.Description") %>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>        
     </asp:GridView>
 </asp:Content>
