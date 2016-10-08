@@ -50,7 +50,7 @@ namespace ChannelManager
                             throw new Exception("Please give the new Channel an unique name!");
 
                         if (ctx.Channels.Any(c => c.Name == channelName && c.Type == channelType))
-                            throw new Exception(string.Format("A {0}-Channel '{1}' already exists!", channel.Type, channelName));
+                            throw new Exception(string.Format("A {0}-Channel '{1}' already exists!", channelType, channelName));
 
                         string channelWebsite = tbxChannelWebsite.Text.Trim();
                         if (!string.IsNullOrEmpty(channelWebsite) && !channelWebsite.Contains("://"))
