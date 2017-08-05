@@ -15,23 +15,25 @@ namespace ChannelManager
             {
                 List<object> suggestions = new List<object>();
 
-                foreach (var suggestion in ctx.Suggestions.Include("Channels").Include("Aliases").Include("Aliases.Channel").Include("Logos").Include("Logos.Channels").Include("User").OrderByDescending(s => s.LastModified))
+                foreach (var suggestion in ctx.Suggestions
+                    .Include("Channels")
+                    .Include("User")
+                    .Include("Aliases").Include("Aliases.Channel")
+                    .Include("Logos").Include("Logos.Channels")
+                    .OrderByDescending(s => s.LastModified))
                 {
-                    EF.Suggestion.SuggestionType suggestWhat;
-                    EF.Channel channel = suggestion.GetSuggestedChannel(out suggestWhat);
+                    EF.Channel channel = suggestion.GetSuggestedChannel(out EF.Suggestion.SuggestionType? suggestWhat);
                     
-                    string channelName = string.Format("{0} ({1})", channel.Name, channel.Type);
-
                     suggestions.Add(new 
                     {
                         Id = suggestion.Id,
                         Creation = suggestion.Created.ToString("dd.MM.yyyy hh:mm"), 
-                        Type = string.Format("New {0}", suggestWhat),
-                        Channel = channelName, 
+                        Type = suggestWhat != null ? $"New {suggestWhat}" : "Invalid",
+                        Channel = channel != null ? $"{channel.Name} ({channel.Type})" : "", 
                         UserName = suggestion.User != null ? suggestion.User.Login : "",
-                        Region = channel.RegionCode,
+                        Region = channel?.RegionCode,
                         Aliases = string.Join(", ", suggestion.Aliases.Select(a => a.Name)),
-                        Description = channel.Description,
+                        Description = channel?.Description,
                         Logo = suggestion.Logos.FirstOrDefault()
                     });
                 }

@@ -19,17 +19,17 @@ namespace ChannelManager
                     var suggestion = GetSuggestion(ctx);
                     if (suggestion != null)
                     {
-                        EF.Suggestion.SuggestionType suggestWhat;
-                        EF.Channel channel = suggestion.GetSuggestedChannel(out suggestWhat);
+                        EF.Channel channel = suggestion.GetSuggestedChannel(out EF.Suggestion.SuggestionType? suggestWhat);
 
                         lblSuggestionDate.Text = suggestion.Created.ToString("dd.MM.yyyy hh:mm");
-                        lblSuggestWhat.Text = string.Format("Suggestion for a new {0}", suggestWhat);
-                        lblChannelName.Text = string.Format("{0} ({1})", channel.Name, channel.Type);
-                        linkChannel.NavigateUrl = channel.Website;
-                        linkChannel.Text = channel.Website;
-                        linkChannel.Visible = !string.IsNullOrEmpty(channel.Website);
-                        lblChannelRegion.Text = channel.RegionCode;
-                        lblChannelDescription.Text = channel.Description;
+                        lblAuthor.Text = suggestion.User != null ? suggestion.User.Login : "";
+                        lblSuggestWhat.Text = suggestWhat != null ? $"Suggestion for a new {suggestWhat}" : "Invalid Suggestion";
+                        lblChannelName.Text = channel != null ? $"{channel.Name} ({channel.Type})" : "";
+                        linkChannel.NavigateUrl = channel?.Website;
+                        linkChannel.Text = channel?.Website;
+                        linkChannel.Visible = !string.IsNullOrEmpty(channel?.Website);
+                        lblChannelRegion.Text = channel?.RegionCode;
+                        lblChannelDescription.Text = channel?.Description;
 
                         var logoNew = suggestion.Logos.FirstOrDefault();
                         if (logoNew != null)
@@ -41,24 +41,27 @@ namespace ChannelManager
                             lblLogoMetadataNew.Visible = true;
                             lblNewLogo.Visible = true;
                         }
-                        
-                        var logoOld = channel.Logos.FirstOrDefault(l => l.Suggestion == null);
-                        if (logoOld != null)
-                        {
-                            imgChannelLogoOld.Visible = true;
-                            imgChannelLogoOld.ImageUrl = string.Format("/Logos/{0}.png", logoOld.Id);
-                            imgChannelLogoOld.NavigateUrl = string.Format("/Logos/{0}.png", logoOld.Id);
-                            lblLogoMetadataOld.Text = string.Format("{0}x{1}, {2:F1}KB", logoOld.Width, logoOld.Height, logoOld.SizeInBytes / 1024.0);
-                            lblLogoMetadataOld.Visible = true;
-                            if (logoNew != null) lblOldLogo.Visible = true;
-                        }
 
-                        string oldAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == null).Select(a => a.Name));
-                        string newAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == suggestion).Select(a => a.Name));
-                        lblChannelOldAliases.Text = oldAliases;
-                        lblChannelNewAliases.Text = newAliases;
-                        lblChannelOldAliases.Visible = oldAliases != "";
-                        lblChannelNewAliases.Visible = newAliases != "";
+                        if (channel != null)
+                        {
+                            var logoOld = channel.Logos.FirstOrDefault(l => l.Suggestion == null);
+                            if (logoOld != null)
+                            {
+                                imgChannelLogoOld.Visible = true;
+                                imgChannelLogoOld.ImageUrl = string.Format("/Logos/{0}.png", logoOld.Id);
+                                imgChannelLogoOld.NavigateUrl = string.Format("/Logos/{0}.png", logoOld.Id);
+                                lblLogoMetadataOld.Text = string.Format("{0}x{1}, {2:F1}KB", logoOld.Width, logoOld.Height, logoOld.SizeInBytes / 1024.0);
+                                lblLogoMetadataOld.Visible = true;
+                                if (logoNew != null) lblOldLogo.Visible = true;
+                            }
+
+                            string oldAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == null).Select(a => a.Name));
+                            string newAliases = string.Join(", ", channel.Aliases.Where(a => a.Suggestion == suggestion).Select(a => a.Name));
+                            lblChannelOldAliases.Text = oldAliases;
+                            lblChannelNewAliases.Text = newAliases;
+                            lblChannelOldAliases.Visible = oldAliases != "";
+                            lblChannelNewAliases.Visible = newAliases != "";
+                        }
 
                         gvMessages.DataSource = suggestion.Messages;
                         gvMessages.DataBind();
@@ -193,6 +196,7 @@ namespace ChannelManager
             {
                 return ctx.Suggestions
                     .Include("Channels")
+                    .Include("User")
                     .Include("Messages")
                     .Include("Aliases")
                     .Include("Aliases.Channel")

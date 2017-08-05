@@ -9,7 +9,7 @@ namespace ChannelManager.EF
     {
         public enum SuggestionType { Channel, Logo, Alias };
 
-        public Channel GetSuggestedChannel(out SuggestionType suggestionType)
+        public Channel GetSuggestedChannel(out SuggestionType? suggestionType)
         {
             if (Channels.Count > 0)
             {
@@ -21,11 +21,14 @@ namespace ChannelManager.EF
                 suggestionType = SuggestionType.Logo;
                 return Logos.First().Channels.First();
             }
-            else
+            else if (Aliases.Count > 0)
             {
                 suggestionType = SuggestionType.Alias;
                 return Aliases.First().Channel;
             }
+
+            suggestionType = null;
+            return null;
         }
     }
 }

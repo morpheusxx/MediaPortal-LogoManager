@@ -10,16 +10,20 @@
         <tr>
             <td>Created</td>
             <td><asp:Label ID="lblSuggestionDate" runat="server" Text="Label"/></td>
-            <td rowspan="6">
+            <td rowspan="7">
                 <asp:Label runat="server" ID="lblNewLogo" Visible="false" Text="New Logo:"/><br />
                 <asp:HyperLink ID="imgChannelLogoNew" runat="server" Target="_blank" CssClass="logoBig" Visible="false" /><br />
                 <asp:Label runat="server" ID="lblLogoMetadataNew" Visible="false"/>
             </td>
-            <td rowspan="6">
+            <td rowspan="7">
                 <asp:Label runat="server" ID="lblOldLogo" Visible="false" Text="Old Logo:"/><br />
                 <asp:HyperLink ID="imgChannelLogoOld" runat="server" Target="_blank" CssClass="logoBig" Visible="false" /><br />
                 <asp:Label runat="server" ID="lblLogoMetadataOld" Visible="false"/>
             </td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td><asp:Label ID="lblAuthor" runat="server" Text="Label"/></td>
         </tr>
         <tr>
             <td>Channel</td>

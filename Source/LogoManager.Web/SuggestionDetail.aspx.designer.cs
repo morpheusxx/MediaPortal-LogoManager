@@ -1,9 +1,9 @@
 ﻿//------------------------------------------------------------------------------
 // <automatisch generiert>
-//     Der Code wurde von einem Tool generiert.
+//     Dieser Code wurde von einem Tool generiert.
 //
-//     Änderungen an der Datei führen möglicherweise zu falschem Verhalten, und sie gehen verloren, wenn
-//     der Code erneut generiert wird. 
+//     Änderungen an dieser Datei können fehlerhaftes Verhalten verursachen und gehen verloren, wenn
+//     der Code neu generiert wird.
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuggestWhat;
         
@@ -26,7 +26,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuggestionDate;
         
@@ -35,7 +35,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNewLogo;
         
@@ -44,7 +44,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink imgChannelLogoNew;
         
@@ -53,7 +53,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLogoMetadataNew;
         
@@ -62,7 +62,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOldLogo;
         
@@ -71,7 +71,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink imgChannelLogoOld;
         
@@ -80,16 +80,25 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLogoMetadataOld;
+        
+        /// <summary>
+        /// lblAuthor-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuthor;
         
         /// <summary>
         /// lblChannelName-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblChannelName;
         
@@ -98,7 +107,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink linkChannel;
         
@@ -107,7 +116,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblChannelRegion;
         
@@ -116,7 +125,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblChannelOldAliases;
         
@@ -125,7 +134,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblChannelNewAliases;
         
@@ -134,7 +143,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblChannelDescription;
         
@@ -143,7 +152,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnApprove;
         
@@ -152,7 +161,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDecline;
         
@@ -161,7 +170,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvMessages;
         
@@ -170,7 +179,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxNewMessage;
         
@@ -179,7 +188,7 @@ namespace ChannelManager {
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddMessage;
     }
