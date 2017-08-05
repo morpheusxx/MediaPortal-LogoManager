@@ -11,7 +11,7 @@
         </tr>
     </table>
     <br />
-    <asp:GridView ID="gvChannels" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Vertical" OnRowDataBound="gvChannels_RowDataBound">
+    <asp:GridView ID="gvChannels" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Vertical" OnRowDataBound="gvChannels_RowDataBound" OnRowCommand="gvChannels_RowCommand" OnDataBinding="gvChannels_DataBinding">
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -24,6 +24,12 @@
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
         <AlternatingRowStyle BackColor="White" />
         <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Images/delete.png" CommandName="DeleteChannel" CommandArgument='<%# Eval("Id") %>'
+                        OnClientClick="return confirm('Are you sure you want to delete?');" />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:HyperLinkField DataNavigateUrlFields="Website" DataTextField="Name" HeaderText="Name" Target="_blank" />
             <asp:TemplateField HeaderText="Logo">
                 <ItemTemplate>

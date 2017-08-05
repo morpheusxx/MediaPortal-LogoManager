@@ -6,7 +6,7 @@ namespace ChannelManager
 {
     public class RoleProvider : System.Web.Security.RoleProvider 
     {
-        public enum Roles { admin };
+        public enum Roles { Administrator, Maintainer };
 
         public override string ApplicationName
         {
@@ -41,9 +41,12 @@ namespace ChannelManager
 
         public override string[] GetRolesForUser(string username)
         {
-            if (!string.IsNullOrEmpty(username) && IsUserInRole(username, Roles.admin.ToString()))
+            if (!string.IsNullOrEmpty(username))
             {
-                return new string[] { Roles.admin.ToString() };
+                using (var dc = new RepositoryContext("LogoDB"))
+                {
+                    return dc.Users.Include("Roles").FirstOrDefault(u => u.Login == username)?.Roles.Select(r => r.Name).ToArray() ?? new string[0];
+                }
             }
             return new string[0];
         }
@@ -55,9 +58,9 @@ namespace ChannelManager
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            if (roleName == Roles.admin.ToString())
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(roleName))
             {
-                using (var dc = new RepositoryContext())
+                using (var dc = new RepositoryContext("LogoDB"))
                 {
                     return dc.Users.Any(u => u.Login == username && u.Roles.Any(r => r.Name == roleName));
                 }
