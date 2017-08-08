@@ -28,6 +28,7 @@
                 <ItemTemplate>
                     <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Images/delete.png" CommandName="DeleteChannel" CommandArgument='<%# Eval("Id") %>'
                         OnClientClick="return confirm('Are you sure you want to delete?');" />
+                    <asp:HyperLink runat="server" ImageUrl="~/Images/edit.png" NavigateUrl='<%# "EditChannel.aspx?id=" + Eval("Id") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:HyperLinkField DataNavigateUrlFields="Website" DataTextField="Name" HeaderText="Name" Target="_blank" />

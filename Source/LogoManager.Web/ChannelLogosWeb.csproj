@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -96,6 +97,7 @@
     <Content Include="ChannelManager.svc" />
     <Content Include="default.css" />
     <Content Include="Images\delete.png" />
+    <Content Include="Images\edit.png" />
     <Content Include="Images\help.png" />
     <Content Include="Images\loading.gif" />
     <Content Include="Web.config">
@@ -111,6 +113,7 @@
     <Content Include="ImportMappingFile.aspx" />
     <Content Include="ListProviders.aspx" />
     <Content Include="FindLogo.aspx" />
+    <Content Include="EditChannel.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChannelManager.Master.cs">
@@ -206,6 +209,13 @@
       <DependentUpon>FindLogo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Thumbnailer.cs" />
+    <Compile Include="EditChannel.aspx.cs">
+      <DependentUpon>EditChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditChannel.aspx.designer.cs">
+      <DependentUpon>EditChannel.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ObjectModel\ChannelManager.tasl" />

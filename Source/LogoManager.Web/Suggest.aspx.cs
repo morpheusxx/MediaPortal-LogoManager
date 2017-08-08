@@ -93,7 +93,7 @@ namespace ChannelManager
                     }
 
                     if (channel.Aliases.Count == 0)
-                        throw new Exception("A Channel must have at least one Alias");
+                        throw new Exception("A Channel must have at least one Alias!");
 
                     if (uploadLogoFile.HasFile)
                     {

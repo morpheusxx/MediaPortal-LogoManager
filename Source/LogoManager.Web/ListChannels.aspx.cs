@@ -60,7 +60,7 @@ namespace ChannelManager
 
         protected void gvChannels_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName== "DeleteChannel")
+            if (e.CommandName == "DeleteChannel")
             {
                 var channelId = new Guid((string)e.CommandArgument);
                 using (var ctx = new EF.RepositoryContext("LogoDB"))
