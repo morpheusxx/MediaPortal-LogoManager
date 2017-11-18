@@ -58,13 +58,13 @@ namespace MediaPortal.LogoManager.Tester
 
       ThemeHandler themeHandler = new ThemeHandler();
       string theme = string.Format("{0}-{1}", DESIGN, THEMES[0]);
-      if (!File.Exists(theme))
+      if (!File.Exists(theme + ".logotheme"))
       {
         Theme themeModern = new Theme { DesignName = DESIGN, ThemeName = THEMES[0] };
         themeHandler.Save(theme, themeModern);
       }
       theme = string.Format("{0}-{1}", DESIGN, THEMES[1]);
-      if (!File.Exists(theme))
+      if (!File.Exists(theme + ".logotheme"))
       {
         Theme themeModernMaxEffects = new Theme { DesignName = DESIGN, ThemeName = THEMES[1], Effects = effects };
         themeHandler.Save(theme, themeModernMaxEffects);
