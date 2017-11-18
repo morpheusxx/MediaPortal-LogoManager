@@ -26,7 +26,7 @@ namespace MediaPortal.LogoManager.Effects
             conturedLogo.FastBlur(1, Color); // smooth outerglow
           if (Transparency.HasValue)
             conturedLogo.ChangeOpacity(Transparency.Value);
-          conturedLogo.SetResolution(96, 96);
+          conturedLogo.SetResolution(targetGraphics.DpiX, targetGraphics.DpiY);
           targetGraphics.DrawImage(conturedLogo, 0, 0);
         }
       }

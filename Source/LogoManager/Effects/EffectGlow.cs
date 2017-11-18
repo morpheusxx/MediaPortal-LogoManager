@@ -47,7 +47,7 @@ namespace MediaPortal.LogoManager.Effects
         squareLogo.ChangeColor(Color);
         squareLogo.FastBlur(Radius, Color);
         squareLogo.FastBlur(Radius, Color);
-        squareLogo.SetResolution(96, 96);
+        squareLogo.SetResolution(targetGraphics.DpiX, targetGraphics.DpiY);
         targetGraphics.DrawImage(squareLogo, _drawX, _drawY);
       }
       return true;

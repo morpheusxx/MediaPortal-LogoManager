@@ -189,7 +189,7 @@ namespace MediaPortal.LogoManager.Effects
     public static Image ResizeImage(Image img, Size newSize)
     {
       Bitmap result = new Bitmap(newSize.Width, newSize.Height);
-      result.SetResolution(96, 96);
+      result.SetResolution(img.HorizontalResolution, img.VerticalResolution);
       using (Graphics graphics = Graphics.FromImage(result))
       {
         graphics.SetHighQuality();
