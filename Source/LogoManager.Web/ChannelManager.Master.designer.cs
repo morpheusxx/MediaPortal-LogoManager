@@ -1,68 +1,70 @@
 ﻿//------------------------------------------------------------------------------
 // <automatisch generiert>
-//     Der Code wurde von einem Tool generiert.
+//     Dieser Code wurde von einem Tool generiert.
 //
-//     Änderungen an der Datei führen möglicherweise zu falschem Verhalten, und sie gehen verloren, wenn
-//     der Code erneut generiert wird. 
+//     Änderungen an dieser Datei können fehlerhaftes Verhalten verursachen und gehen verloren, wenn
+//     der Code neu generiert wird.
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace ChannelManager {
-    
-    
-    public partial class ChannelManager1 {
-        
+namespace ChannelManager
+{
+
+
+    public partial class ChannelManager1
+    {
+
         /// <summary>
-        /// head-Steuerelement
+        /// head-Steuerelement.
         /// </summary>
         /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Automatisch generiertes Feld.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
+
         /// <summary>
-        /// form1-Steuerelement
+        /// form1-Steuerelement.
         /// </summary>
         /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Automatisch generiertes Feld.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
-        /// SiteMapDataSource-Steuerelement
+        /// SiteMapDataSource-Steuerelement.
         /// </summary>
         /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Automatisch generiertes Feld.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource;
-        
+
         /// <summary>
-        /// Menu1-Steuerelement
+        /// Menu1-Steuerelement.
         /// </summary>
         /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Automatisch generiertes Feld.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Menu Menu1;
-        
+
         /// <summary>
-        /// ToolkitScriptManager1-Steuerelement
+        /// ToolkitScriptManager1-Steuerelement.
         /// </summary>
         /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Automatisch generiertes Feld.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
-        
+        protected global::System.Web.UI.ScriptManager ToolkitScriptManager1;
+
         /// <summary>
-        /// ContentPlaceHolder1-Steuerelement
+        /// ContentPlaceHolder1-Steuerelement.
         /// </summary>
         /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// Automatisch generiertes Feld.
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
     }
