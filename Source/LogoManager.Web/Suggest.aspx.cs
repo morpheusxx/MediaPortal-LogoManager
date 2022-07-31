@@ -31,7 +31,7 @@ namespace ChannelManager
                     suggestion.Id = Guid.NewGuid();
                     suggestion.Created = DateTime.Now;
                     suggestion.LastModified = DateTime.Now;
-                    
+
                     var membership = System.Web.Security.Membership.GetUser();
                     if (membership != null)
                         suggestion.User = ctx.Users.FirstOrDefault(u => u.Id == (Guid)membership.ProviderUserKey);
@@ -41,7 +41,8 @@ namespace ChannelManager
                     repo.Suggestions.Add(suggestion);
 
                     Channel channel = null;
-                    if (TabContainer1.ActiveTab == tabPanelNewChannel)
+
+                    if (rdNewChannel.Checked)
                     {
                         string channelName = tbxChannelName.Text.Trim();
                         var channelType = (ChannelType)byte.Parse(rblChannelType.SelectedValue);
@@ -137,7 +138,7 @@ namespace ChannelManager
 
                     if (!suggestion.Channels.Any() && !suggestion.Aliases.Any() && !suggestion.Logos.Any())
                         throw new Exception("Please suggest at least a new logo or new alias!");
-                    
+
                     ctx.SaveChanges();
 
                     Response.Redirect(Request.Url.AbsoluteUri, false);
@@ -158,7 +159,7 @@ namespace ChannelManager
             string search = tbxChannelSearch.Text.Trim();
             using (var ctx = new EF.RepositoryContext("LogoDB"))
             {
-                foreach(var channelName in ctx.Channels.Where(c => c.Suggestion == null && c.Name.Contains(search)).Select(c => c.Name))
+                foreach (var channelName in ctx.Channels.Where(c => c.Suggestion == null && c.Name.Contains(search)).Select(c => c.Name))
                     listFoundChannels.Items.Add(channelName);
             }
         }
@@ -178,7 +179,7 @@ namespace ChannelManager
                     lblSelectedChannelDescription.Text = channel.Description;
                     lblSelectedChannelType.Text = Enum.GetName(typeof(ChannelType), channel.Type);
                     lbSelectedChannelAliases.Items.Clear();
-                    foreach(var alias in channel.Aliases)
+                    foreach (var alias in channel.Aliases)
                         lbSelectedChannelAliases.Items.Add(alias.Name);
                     lbSelectedChannelAliases.Visible = lbSelectedChannelAliases.Items.Count > 0;
                 }
@@ -200,6 +201,12 @@ namespace ChannelManager
         {
             listNewAliases.Items.Remove(listNewAliases.SelectedItem);
             btnRemoveAlias.Visible = listNewAliases.Items.Count > 0;
+        }
+
+        protected void ShowFieldset(object sender, EventArgs e)
+        {
+            tabPanelNewChannel.CssClass = rdNewChannel.Checked ? "" : "hidden";
+            tabPanelExistingChannel.CssClass = rdNewLogo.Checked ? "" : "hidden";
         }
     }
 }
