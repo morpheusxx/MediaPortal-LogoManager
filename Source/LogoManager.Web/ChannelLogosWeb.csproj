@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="ChannelType.cs" />
     <Compile Include="IChannelManager.cs" />
+    <Compile Include="LogoDto.cs" />
     <Compile Include="ObjectModel\ChannelManager-dependent.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -36,26 +36,27 @@
                 <ItemTemplate>
                     <div style="float:left">
                         <asp:HyperLink runat="server" Width="48px" CssClass="logothumb" Target="_blank"
-                            ImageUrl='<%# ChannelManager.Thumbnailer.GetThumbFileUrl(((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id) %>' 
-                            NavigateUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Id + ".png" %>'/>
+                                       ImageUrl='<%# Eval("ChannelLogoThumb") %>'
+                                       NavigateUrl='<%# Eval("ChannelLogoUrl") %>' />
                     </div>
                     <div class="logoMetadata">
-                        <%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Width %>x<%# ((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).Height %><br /><%# (((IList<ChannelManager.EF.Logo>)Eval("Logos")).First(l => l.Suggestion == null).SizeInBytes / 1024.0).ToString("F1") %>KB
+                        <%# Eval("Width") %> x <%# Eval("Height") %><br />
+                        <%# Eval("SizeKb") %> kB
                     </div>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Aliases">
                 <ItemTemplate>
-                    <asp:Repeater runat="server" ID="repeatAliases">
+                    <asp:Repeater runat="server" ID="repeatAliases" DataMember="Aliases">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Eval("Name") %>'/>
-                            <asp:Label runat="server" Text='<%# string.Format("({0})", string.Join(", ", ((IList<ChannelManager.EF.Provider>)Eval("Providers")).Select(a => a.Name))) %>' Visible='<%# (int)Eval("Providers.Count") > 0 %>' CssClass="provider"/>
+                            <asp:Label runat="server" Text='<%# Eval("Providers") %>' Visible='<%# (int)Eval("ProvidersCount") > 0 %>' CssClass="provider"/>
                             <br />
                         </ItemTemplate>
                     </asp:Repeater>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Description" HeaderText="Description" />
+            <asp:BoundField DataField="ChannelDescription" HeaderText="Description" />
         </Columns>
     </asp:GridView>
 </asp:Content>

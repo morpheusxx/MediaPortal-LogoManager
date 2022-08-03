@@ -42,7 +42,34 @@ namespace ChannelManager
                 using (var ctx = new EF.RepositoryContext("LogoDB"))
                 {
                     var list = ctx.Channels.Include("Logos").Include("Logos.Suggestion").Include("Aliases").Include("Aliases.Providers").Where(c => c.Suggestion == null && c.RegionCode == region && c.Type == type).OrderBy(c => c.Name).ToList();
-                    gvChannels.DataSource = list;
+
+                    var results = new List<ChannelDto>();
+                    foreach (var c in list)
+                    {
+                        var firstLogo = c.Logos.First(l => l.Suggestion == null);
+                        var channel = new ChannelDto
+                        {
+                            Id = c.Id,
+                            Name = c.Name,
+                            ChannelLogoThumb = Thumbnailer.GetThumbFileUrl(firstLogo.Id),
+                            ChannelLogoUrl = "/Logos/" + firstLogo.Id + ".png",
+                            Aliases = c.Aliases.Select(a => 
+                                (object)new
+                                {
+                                    a.Name,
+                                    Providers = string.Format("({0})", string.Join(", ", a.Providers.Select(p => p.Name))),
+                                    ProvidersCount = a.Providers.Count
+                                }).ToList(), 
+                            Width = firstLogo.Width,
+                            Height = firstLogo.Height,
+                            SizeKb = (firstLogo.SizeInBytes / 1024).ToString("F1"),
+                            ChannelDescription = c.Description,
+                            Website = c.Website ?? string.Empty
+                        };
+                        results.Add(channel);
+                    }
+
+                    gvChannels.DataSource = results;
                     gvChannels.DataBind();
                 }
             }
@@ -53,7 +80,7 @@ namespace ChannelManager
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 var repeater = (Repeater)e.Row.FindControl("repeatAliases");
-                repeater.DataSource = (e.Row.DataItem as EF.Channel).Aliases;
+                repeater.DataSource = (e.Row.DataItem as ChannelDto).Aliases;
                 repeater.DataBind();
             }
         }

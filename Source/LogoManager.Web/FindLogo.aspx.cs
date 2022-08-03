@@ -32,7 +32,29 @@ namespace ChannelManager
                     // limit results to be matching by RegionCode
                     aliases = aliases.Where(a => a.Channel.RegionCode == tbxRegion.Text);
                 }
-                gvLogos.DataSource = aliases.ToList();
+
+                List<LogoDto> results = new List<LogoDto>();
+                foreach (var a in aliases)
+                {
+                    // This could be much simpler by Linq query, but mono throws many different exceptions when trying :(
+                    var firstLogo = a.Channel.Logos.First(l => l.Suggestion == null);
+                    var logo = new LogoDto
+                    {
+                        Name = a.Name,
+                        ProviderNames = string.Join(", ", a.Providers.Select(p => p.Name)),
+                        ChannelLogoThumb = Thumbnailer.GetThumbFileUrl(firstLogo.Id),
+                        ChannelLogoUrl = "/Logos/" + firstLogo.Id + ".png",
+                        Width = firstLogo.Width,
+                        Height = firstLogo.Height,
+                        SizeKb = (firstLogo.SizeInBytes / 1024).ToString("F1"),
+                        ChannelName = a.Channel.Name,
+                        ChannelRegionCode = a.Channel.RegionCode,
+                        ChannelDescription = a.Channel.Description
+                    };
+                    results.Add(logo);
+                }
+
+                gvLogos.DataSource = results;
                 gvLogos.DataBind();
             }
         }

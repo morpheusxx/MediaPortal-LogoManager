@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Find Logo" Language="C#" MasterPageFile="~/ChannelManager.Master" AutoEventWireup="true" CodeBehind="FindLogo.aspx.cs" Inherits="ChannelManager.FindLogo" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -7,14 +8,14 @@
         <tr>
             <td>Channel Name:</td>
             <td>
-                <asp:TextBox ID="tbxName" runat="server" Width="200px"/>
+                <asp:TextBox ID="tbxName" runat="server" Width="200px" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxName" ErrorMessage="*" ForeColor="Red" />
             </td>
         </tr>
         <tr>
             <td>Region Code:</td>
             <td>
-                <asp:TextBox ID="tbxRegion" runat="server" Width="100px"/>
+                <asp:TextBox ID="tbxRegion" runat="server" Width="100px" />
                 <asp:RegularExpressionValidator runat="server" ControlToValidate="tbxRegion" ErrorMessage="Must be two upper case letters (ISO-3166 ALPHA-2)" ForeColor="Red" ValidationExpression="[A-Z][A-Z]" />
             </td>
         </tr>
@@ -25,8 +26,9 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2"><asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" /></td>
-        </tr>    
+            <td colspan="2">
+                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" /></td>
+        </tr>
     </table>
     <asp:GridView runat="server" ID="gvLogos" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Vertical">
         <AlternatingRowStyle BackColor="White" />
@@ -42,38 +44,23 @@
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
         <Columns>
             <asp:BoundField DataField="Name" HeaderText="Alias" />
-            <asp:TemplateField HeaderText="Providers">
-                <ItemTemplate>
-                    <asp:Label runat="server" Text='<%# string.Join(", ", ((IList<ChannelManager.EF.Provider>)Eval("Providers")).Select(a => a.Name)) %>' />
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Channel">
-                <ItemTemplate>
-                    <%# Eval("Channel.Name") %>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Region">
-                <ItemTemplate>
-                    <%# Eval("Channel.RegionCode") %>
-                </ItemTemplate>
-            </asp:TemplateField>
+            <asp:BoundField DataField="ProviderNames" HeaderText="Providers" />
+            <asp:BoundField DataField="ChannelName" HeaderText="Channel" />
+            <asp:BoundField DataField="ChannelRegionCode" HeaderText="Region" />
             <asp:TemplateField HeaderText="Logo">
                 <ItemTemplate>
-                    <div style="float:left">
+                    <div style="float: left">
                         <asp:HyperLink runat="server" Width="48px" CssClass="logothumb" Target="_blank"
-                            ImageUrl='<%# ChannelManager.Thumbnailer.GetThumbFileUrl(((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Id) %>' 
-                            NavigateUrl='<%# "/Logos/" + ((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Id + ".png" %>'/>
+                            ImageUrl='<%# Eval("ChannelLogoThumb") %>'
+                            NavigateUrl='<%# Eval("ChannelLogoUrl") %>' />
                     </div>
                     <div class="logoMetadata">
-                        <%# ((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Width %>x<%# ((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).Height %><br /><%# (((IList<ChannelManager.EF.Logo>)Eval("Channel.Logos")).First(l => l.Suggestion == null).SizeInBytes / 1024.0).ToString("F1") %>KB
+                        <%# Eval("Width") %> x <%# Eval("Height") %><br />
+                        <%# Eval("SizeKb") %> kB
                     </div>
                 </ItemTemplate>
-            </asp:TemplateField>            
-            <asp:TemplateField HeaderText="Description">
-                <ItemTemplate>
-                    <%# Eval("Channel.Description") %>
-                </ItemTemplate>
             </asp:TemplateField>
-        </Columns>        
+            <asp:BoundField DataField="ChannelDescription" HeaderText="Description" />
+        </Columns>
     </asp:GridView>
 </asp:Content>
