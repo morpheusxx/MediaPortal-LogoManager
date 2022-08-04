@@ -1,7 +1,17 @@
-﻿h3 {
+﻿body {
+    font-family: 'Segoe UI', Verdana, Geneva, sans-serif;
+}
+
+fieldset {
+    background: #f0f0f0;
+    margin: 5px;
+    max-width: 800px;
+}
+
+h3 {
     margin-top: 10px;
     margin-bottom: 2px;
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: 'Segoe UI',Verdana, Geneva, sans-serif;
     font-weight: normal;
 }
 
@@ -42,5 +52,16 @@ span.provider {
 
 .radioCheck {
     padding: 5px;
-    margin: 5px;
+    font-size: 11pt;
+    background: #B5C7DE;
+}
+
+
+.ctl00_Menu1_1 {
+    color: #222;
+    font-family: 'Segoe UI';
+}
+
+a.logothumb {
+    border: none;
 }
