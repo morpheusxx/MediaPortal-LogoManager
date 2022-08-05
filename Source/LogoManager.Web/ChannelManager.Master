@@ -9,6 +9,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" type="text/css" href="default.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
     <form id="form1" runat="server">

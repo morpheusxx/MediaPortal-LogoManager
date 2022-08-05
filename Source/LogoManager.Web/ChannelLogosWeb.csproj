@@ -113,6 +113,7 @@
   <ItemGroup>
     <Content Include="ChannelManager.svc" />
     <Content Include="default.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\help.png" />
