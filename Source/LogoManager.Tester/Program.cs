@@ -11,7 +11,7 @@ namespace MediaPortal.LogoManager.Tester
   class Program
   {
     // Development service url
-    private const string REPOSITORY_URL = "http://channellogos.nocrosshair.de/";
+    private const string REPOSITORY_URL = "http://logomanager.team-mediaportal.com/";
     private const string DESIGN = "Modern-StreamedMP 16x9";
     private static string[] THEMES = new[] { "none", "max" };
 
