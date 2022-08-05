@@ -3,33 +3,36 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
-    <table>
-        <tr>
-            <td>Channel Name:</td>
-            <td>
-                <asp:TextBox ID="tbxName" runat="server" Width="200px" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxName" ErrorMessage="*" ForeColor="Red" />
-            </td>
-        </tr>
-        <tr>
-            <td>Region Code:</td>
-            <td>
-                <asp:TextBox ID="tbxRegion" runat="server" Width="100px" />
-                <asp:RegularExpressionValidator runat="server" ControlToValidate="tbxRegion" ErrorMessage="Must be two upper case letters (ISO-3166 ALPHA-2)" ForeColor="Red" ValidationExpression="[A-Z][A-Z]" />
-            </td>
-        </tr>
-        <tr>
-            <td>Type:</td>
-            <td>
-                <asp:RadioButtonList ID="rblChannelType" runat="server" DataTextField="Key" DataValueField="Value" RepeatDirection="Horizontal" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" /></td>
-        </tr>
-    </table>
+
+    <asp:Panel runat="server" GroupingText="Find logo">
+        <table>
+            <tr>
+                <td>Channel Name:</td>
+                <td>
+                    <asp:TextBox ID="tbxName" runat="server" Width="200px" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxName" ErrorMessage="*" ForeColor="Red" />
+                </td>
+            </tr>
+            <tr>
+                <td>Region Code:</td>
+                <td>
+                    <asp:TextBox ID="tbxRegion" runat="server" Width="100px" />
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="tbxRegion" ErrorMessage="Must be two upper case letters (ISO-3166 ALPHA-2)" ForeColor="Red" ValidationExpression="[A-Z][A-Z]" />
+                </td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>
+                    <asp:RadioButtonList ID="rblChannelType" runat="server" DataTextField="Key" DataValueField="Value" RepeatDirection="Horizontal" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
     <asp:GridView runat="server" ID="gvLogos" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Vertical">
         <AlternatingRowStyle BackColor="White" />
         <EditRowStyle BackColor="#2461BF" />

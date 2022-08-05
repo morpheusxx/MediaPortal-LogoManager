@@ -2,10 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
-    Provider: <asp:DropDownList runat="server" ID="ddProviders" DataTextField="Name" DataValueField="Id" />
-    <asp:Button runat="server" ID="btnShowAliases" Text="Show Aliases" OnClick="btnShowAliases_Click" />
-    <br />
+
+    <asp:Panel runat="server" GroupingText="List Providers">
+        Provider: <asp:DropDownList runat="server" ID="ddProviders" DataTextField="Name" DataValueField="Id" />
+        <asp:Button runat="server" ID="btnShowAliases" Text="Show Aliases" OnClick="btnShowAliases_Click" />
+    </asp:Panel>
+
     <asp:GridView runat="server" ID="gvAliases" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="Both">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
