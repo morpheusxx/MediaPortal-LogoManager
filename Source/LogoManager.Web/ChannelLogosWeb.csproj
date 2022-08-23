@@ -114,6 +114,7 @@
     <Content Include="ChannelManager.svc" />
     <Content Include="default.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\help.png" />
@@ -145,6 +146,9 @@
       <DependentUpon>ChannelManager.svc</DependentUpon>
     </Compile>
     <Compile Include="ChannelType.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="IChannelManager.cs" />
     <Compile Include="LogoDto.cs" />
     <Compile Include="ObjectModel\ChannelManager-dependent.cs">
