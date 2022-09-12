@@ -47,8 +47,8 @@ namespace MediaPortal.LogoManager
       if (!File.Exists(logoFileName))
         return false;
 
-      Bitmap logo = (Bitmap)Image.FromFile(logoFileName);
-      return CreateLogo(designName, logo, saveFileName, effects);
+      using (Bitmap logo = (Bitmap)Image.FromFile(logoFileName))
+        return CreateLogo(designName, logo, saveFileName, effects);
     }
 
     /// <summary>
@@ -78,8 +78,8 @@ namespace MediaPortal.LogoManager
     /// <returns><c>true</c> if successful</returns>
     public bool CreateLogo(string designName, Stream logoStream, string saveFileName, List<AbstractEffect> effects)
     {
-      Bitmap logo = (Bitmap)Image.FromStream(logoStream);
-      return CreateLogo(designName, logo, saveFileName, effects);
+      using (Bitmap logo = (Bitmap)Image.FromStream(logoStream))
+        return CreateLogo(designName, logo, saveFileName, effects);
     }
 
     /// <summary>

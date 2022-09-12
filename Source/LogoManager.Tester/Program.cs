@@ -15,7 +15,7 @@ namespace MediaPortal.LogoManager.Tester
     private const string DESIGN = "Modern-StreamedMP 16x9";
     private static string[] THEMES = new[] { "none", "max" };
 
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
       // Create and load themes
       CreateDefaultThemes();
@@ -29,7 +29,7 @@ namespace MediaPortal.LogoManager.Tester
         ProcessFile(processor, "1_plus_1_International", theme);
 
         // Test 2: From repository
-        using (var repo = new LogoRepository { RepositoryUrl = REPOSITORY_URL })
+        using (var repo = new LogoRepository(REPOSITORY_URL))
         {
           // Parallel async processing
           var results = repo.Download(new[] { "Das Erste hd", "sat.1", "zdf hd", "animal planet hd", "discovery channel" });
@@ -37,6 +37,21 @@ namespace MediaPortal.LogoManager.Tester
 
           // Synchronous processing
           var stream = repo.Download("zdf");
+          ProcessStream(processor, stream, "zdf", theme);
+        }
+
+        // Test 3: From repository async version
+        using (var repo = new LogoRepository(REPOSITORY_URL))
+        {
+          // Parallel async processing
+          var results = await repo.DownloadAsync(new[] { "Das Erste hd", "sat.1", "zdf hd", "animal planet hd", "discovery channel" });
+          foreach (var channelAndStream in results)
+          {
+            ProcessStream(processor, channelAndStream.Value, channelAndStream.Key, theme);
+          }
+
+          // Synchronous processing
+          var stream = await repo.DownloadAsync("zdf");
           ProcessStream(processor, stream, "zdf", theme);
         }
       }
